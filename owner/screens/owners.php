@@ -5,9 +5,10 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" type="text/css" href="../ui/css/bootstrap.min.css">
-    <link href="../ui\icons\css\all.css" rel="stylesheet">
-	<script type="text/javascript" src="../ui/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../ui/css/bootstrap.min.css">
+    <link href="../../ui/icons/css/all.css" rel="stylesheet">
+	<script type="text/javascript" src="../../ui/js/bootstrap.min.js"></script>
+  <script src="../../ui/jquery-3.6.0.min.js"></script>
 </head>
 <body>
    <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#16AB39;">
@@ -58,6 +59,10 @@
             </div>
 
             <div class="col">
+              <div class="container mt-5 d-flex flex-row justify-content-between">  
+              <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add</button>     
+              </div>
+    
                 <table class="table  table-bordered table-hover mt-5 mx-auto ">
                   <thead class="border-0 border-light table-dark">
                     <tr class="table-info">
@@ -110,65 +115,18 @@
         </div>
         
     </div>
+    
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Are you  sure you  want to delete this owner?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Yes Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success">
-            <i class="fa fa-save" aria-hidden="true"></i>
-            Update and Save</button>
-      </div>
-    </div>
-  </div>
-</div>
+    
 
 
 
 
+
+
+<?php
+require("../screens/modals.html");
+?>
     
 </body>
 </html>
