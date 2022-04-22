@@ -1,18 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "real";
-
-function clean($data){
-    $data = strip_tags($data);
-    $data = htmlspecialchars($data);
-    $data = stripslashes($data);
-    $data = stripcslashes($data);
-    $data = trim($data);
-    $data = htmlentities($data);
-    return $data;
-}
+require("../../db_config.php");
 
 $names = clean($_POST['names']);
 $contact = clean($_POST['contact']);

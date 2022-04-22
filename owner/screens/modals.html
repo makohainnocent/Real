@@ -1,48 +1,11 @@
 <script>
   $(document).ready(
     function() {
-      $('#addowner').click(
-        function() {
-          $('#addowner').attr('disabled','disabled');
-          var names = $('#names').val();
-          var contact = $('#contact').val();
-          var nin = $('#nin').val();
-          var bank = $('#bank').val();
-
-          if(names!="" && contact!="" && nin!="" && bank!=""){
-            $.ajax({
-              url: "../functions/add_owner.php",
-              type: "POST",
-
-              data: {
-                names: names,
-                contact: contact,
-                nin: nin,
-                bank: bank
-              },
-              
-              cache: false,
-              success: function(dataResult){
-                var dataResult = JSON.parse(dataResult);
-                if(dataResult.statusCode==200){
-                  $("#addowner").removeAttr("disabled");
-                  alert(names+' was sucessfully added as an owner!');
-                  $('#add_user_form').find(':input').val('');					
-                }
-                else if(dataResult.statusCode==201){
-                  alert("Error occured !");
-                }
-              }
-            });
-          }
-        else{
-          alert('Please fill all the fields!');
-          $("#addowner").removeAttr("disabled");
-        }
-      }
-      );
+      displayOwners();
+      addOwners();
+    
     }
-    );
+      );
 </script>
 <div class="modal fade" id="add_owner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -76,60 +39,42 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-success" id="addowner">
               <i class="fa fa-save" aria-hidden="true"></i>
-              Add</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Are you  sure you  want to delete this owner?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger">Yes Delete</button>
+              Submit</button>
         </div>
       </div>
     </div>
   </div>
   
   
-  <div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Update User</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Update Owner</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
         <form>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <label for="recipient-name" class="col-form-label">Names:</label>
+              <input type="text" class="form-control" id="ownerName">
             </div>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <label for="recipient-name" class="col-form-label">Contact:</label>
+              <input type="text" class="form-control" id="ownerContact">
             </div>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <label for="recipient-name" class="col-form-label">NIN:</label>
+              <input type="text" class="form-control" id="ownerNin">
             </div>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <label for="recipient-name" class="col-form-label">Bank A/C:</label>
+              <input type="text" class="form-control" id="ownerBank">
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success">
+          <button type="button" class="btn btn-success" id="realupdate">
               <i class="fa fa-save" aria-hidden="true"></i>
               Update and Save</button>
         </div>

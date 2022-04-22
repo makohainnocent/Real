@@ -6,6 +6,8 @@ $username = "root";
 $password = "";
 $dbname = "real";
 
+
+
 $conn = @mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
 if (!$conn) {
@@ -15,6 +17,18 @@ else {
 
 
 
+}
+
+//data cleanser
+function clean($data)
+{
+    $data = strip_tags($data);
+    $data = htmlspecialchars($data);
+    $data = stripslashes($data);
+    $data = stripcslashes($data);
+    $data = trim($data);
+    $data = htmlentities($data);
+    return $data;
 }
 
 ?>
