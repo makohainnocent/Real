@@ -22,7 +22,7 @@ if (mysqli_num_rows($query) > 0) {
     }
 }
 else {
-    echo "<h2>No users to disaplay,please add a user</h2>";
+    echo "<h2>No ownerss to display,please add new</h2>";
 //echo json_encode(array("statusCode" => 201));
 }
 

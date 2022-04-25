@@ -172,7 +172,7 @@ require("../screens/modals.html");
         var dataResult = JSON.parse(dataResult);
 				if(dataResult.statusCode==200){
 					
-					alert(name);
+					alert(name+" Has been updated!");
           displayOwners();
         }
         else{
