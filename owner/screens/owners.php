@@ -118,20 +118,24 @@ require("../screens/modals.html");
     });
   }
 
+
+  
  function deleteOwner(id) {
-   $.ajax(
-     {
-       url:'../functions/delete_owner.php',
-       type:'post',
-       data:{
-         id:id
-       },
-       success:function(){
-         displayOwners();
-       }
-       
-        }); 
- }
+   var name=$('#updatebutton').attr('data-names');
+   if (confirm("Are sure you Want to delete "+name+"?!") == true) {
+     $.ajax(
+       {
+         url:'../functions/delete_owner.php',
+         type:'post',
+         data:{
+           id:id
+          },
+          success:function(){
+            displayOwners();
+          }
+        });
+      }
+  }
  
  var id;
  var name;
