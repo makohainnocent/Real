@@ -1,7 +1,7 @@
 <?php
 require("../../db_config.php");
 
-$sql = "SELECT id,estate_name,location,details FROM estates";
+$sql = "SELECT estates.id as id ,estates.estate_name as estate_name ,estates.location as location,estates.details as details, owners.names as owner_names FROM estates INNER JOIN owners ON owners.id=estates.owner_id";
 $query = mysqli_query($conn, $sql);
 $number = 0;
 if (mysqli_num_rows($query) > 0) {
@@ -10,6 +10,7 @@ if (mysqli_num_rows($query) > 0) {
         echo '<tr><th scope="">' . $number . '</th>
         <td>' . $row['estate_name'] . '</td>
         <td>20</td>
+        <td>' . $row['owner_names'] . '</td>
         <td>' . $row['location'] . '</td>
         <td>' . $row['details'] . '</td>
         <td><button onclick="deleteOwner(' . $row['id'] . ')" type="button" class="btn btn-danger btn-sm" id="deletebutton">

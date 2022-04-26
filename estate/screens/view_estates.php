@@ -29,11 +29,10 @@
                     <tr class="table-info">
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Units</th>
-                        <th scope="col">Contact</th>
                         <th scope="col">Owner</th>
+                        <th scope="col">Units</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Added</th>
+                        <th scope="col">Details</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -134,12 +133,19 @@
         });
 
         function addEstate() {
+            $.get("../functions/get_owners.php", function(data) {
+                // Display the returned data in browser
+                $("#result").html(data);
+            });
             $('#addestate').click(
                 function() {
                     $('#addestate').attr('disabled', 'disabled');
                     var names = $('#estate_name').val();
                     var location = $('#estate_location').val();
                     var details = $('#estate_details').val();
+                    var owner_id = $('#owner_id').val();
+
+
 
 
                     if (names != "" && location != "" && details != "") {
@@ -149,8 +155,10 @@
 
                             data: {
                                 estate_name: names,
+                                owner: owner_id,
                                 estate_location: location,
                                 estate_details: details,
+
                             },
 
                             cache: false,
@@ -158,9 +166,9 @@
                                 var dataResult = JSON.parse(dataResult);
                                 if (dataResult.statusCode == 200) {
                                     $("#addestate").removeAttr("disabled");
-                                    alert(names + ' was sucessfully added as an owner!');
+                                    alert(names + ' was sucessfully added to the database!');
                                     //redisplay data
-                                    //displayOwners();
+                                    displayEstates();
                                     $('#add_estate_form').find(':input').val('');
                                 } else if (dataResult.statusCode == 201) {
                                     alert("Error occured !");
