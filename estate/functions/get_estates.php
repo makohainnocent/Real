@@ -8,12 +8,14 @@ if (mysqli_num_rows($query) > 0) {
     while ($row = mysqli_fetch_assoc($query)) {
         $number += 1;
         echo '<tr><th scope="">' . $number . '</th>
-        <td>' . $row['estate_name'] . '</td>
+        <td>' . ucfirst($row['estate_name']) . ' <span class="badge bg-secondary rounded-pill bg-success">
+                                    <i class="fas fa-home    "></i> 9</span>
+                                    <br/><small class="text-muted"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> ' . ucwords($row['location']) . '</small></td>
         <td>20</td>
-        <td>' . $row['owner_names'] . '</td>
+        <td><i class="fas fa-user  text-warning  "></i> ' . ucwords($row['owner_names']) . '</td>
         <td>' . $row['location'] . '</td>
         <td>' . $row['details'] . '</td>
-        <td><button onclick="deleteOwner(' . $row['id'] . ')" type="button" class="btn btn-danger btn-sm" id="deletebutton">
+        <td><button data-id="' . $row['id'] . '" data-names="' . $row['estate_name'] . '"  type="button" class="btn btn-outline-danger btn-sm" id="deletebutton">
         <i class="fa fa-trash" aria-hidden="true"></i> DELETE</button>
         <button id="updatebutton" data-id="' . $row['id'] . '" data-names="' . $row['estate_name'] . '" type="button" class="binto btn btn-primary btn-sm">
         <i class="fa fa-edit" aria-hidden="true"></i> MODIFY</button>
@@ -21,7 +23,7 @@ if (mysqli_num_rows($query) > 0) {
 		</tr>';
     }
 } else {
-    echo "<h2>No ownerss to display,please add new</h2>";
+    echo "<h2>No Estate to display,please add new</h2>";
     //echo json_encode(array("statusCode" => 201));
 }
 

@@ -24,13 +24,14 @@
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
 
 
-            <table class="table  table-bordered table-hover mt-3 mx-auto ">
-                <thead class="border-0">
-                    <tr class="table-info">
+
+            <table class="table table-hover mt-3 mx-auto ">
+                <thead class="thead-light">
+                    <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Owner</th>
                         <th scope="col">Units</th>
+                        <th scope="col">Owner</th>
                         <th scope="col">Location</th>
                         <th scope="col">Details</th>
                         <th scope="col">Actions</th>
@@ -62,23 +63,31 @@
             });
         }
 
-
-
-        function deleteOwner(id) {
-            var name = $('#updatebutton').attr('data-names');
-            if (confirm("Are sure you Want to delete " + name + "?!") == true) {
-                $.ajax({
-                    url: '../functions/delete_owner.php',
-                    type: 'post',
-                    data: {
-                        id: id
-                    },
-                    success: function() {
-                        displayOwners();
+        $(document).ready(
+            function() {
+                $(document).on('click', '#deletebutton', function() {
+                    var name = $(this).attr('data-names');
+                    var id = $(this).attr('data-id');
+                    if (confirm("Are sure you Want to delete " + name + "?!") == true) {
+                        $.ajax({
+                            url: '../functions/delete_estate.php',
+                            type: 'post',
+                            data: {
+                                id: id
+                            },
+                            success: function() {
+                                displayEstates();
+                            }
+                        });
                     }
-                });
+                })
             }
-        }
+        );
+
+
+        /*function deleteEstate(id) {
+            var name = $('#deletebutton').attr('data-names');
+        }*/
 
         var id;
         var name;
