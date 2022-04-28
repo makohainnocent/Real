@@ -100,7 +100,7 @@
                 $('#updateModal').modal('show');
                 $('#estateName').val(estate_name);
                 $('#estateLocation').val(estate_location);
-                var html_code = "<option selected value=" + owner_id + ">" + estate_owner_names + "</option>";
+                var html_code = "<option selected value=" + estate_owner_id + ">" + estate_owner_names + "</option>";
                 $('#ownerId').html(html_code);
                 $('#estateDetails').val(estate_details);
 
@@ -110,21 +110,21 @@
 
             $(document).on('click', '#realupdate', function() {
                 $.ajax({
-                    url: '../functions/update_owner.php',
+                    url: '../functions/update_estate.php',
                     type: 'post',
                     data: {
-                        id: id,
-                        name: $('#ownerName').val(),
-                        contact: $('#ownerContact').val(),
-                        nin: $('#ownerNin').val(),
-                        bank: $('#ownerBank').val()
+                        estate_id: estate_id,
+                        estate_name: $('#estateName').val(),
+                        estate_location: $('#estateLocation').val(),
+                        estate_owner: $('#ownerId').val(),
+                        estate_details: $('#estateDetails').val()
                     },
                     success: function(dataResult) {
                         var dataResult = JSON.parse(dataResult);
                         if (dataResult.statusCode == 200) {
 
-                            alert(name + " Has been updated!");
-                            displayOwners();
+                            alert(estate_name + " Has been updated!");
+                            displayEstates();
                         } else {
                             alert('error ');
                         }
