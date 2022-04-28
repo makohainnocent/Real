@@ -8,13 +8,13 @@ if (mysqli_num_rows($query) > 0) {
     while ($row = mysqli_fetch_assoc($query)) {
         $number += 1;
         echo '<tr><th scope="">' . $number . '</th>
-        <td>' . ucfirst($row['estate_name']) . ' <span class="badge bg-secondary rounded-pill bg-success">
+        <td>' . ucwords($row['estate_name']) . ' <span class="badge bg-secondary rounded-pill bg-success">
                                     <i class="fas fa-home    "></i> 9</span>
-                                    <br/><small class="text-muted"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> ' . ucwords($row['location']) . '</small></td>
-        <td>20</td>
-        <td><i class="fas fa-user  text-warning  "></i> ' . ucwords($row['owner_names']) . '</td>
-        <td>' . $row['location'] . '</td>
-        <td>' . $row['details'] . '</td>
+                                    <br/><small class="text-muted"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> ' . ucwords($row['location']) . '  &nbsp;<i class="fas fa-user  text-warning  "></i> ' . ucwords($row['owner_names']) . '</small></td>
+                                    <td>
+                                    <span class="badge rounded-pill bg-primary">9 of 10</span>
+                                    </td>
+                                    <td><p class="text-muted"><small>' . ucfirst($row['details']) . '</small></p></td>
         <td><button data-id="' . $row['id'] . '" data-names="' . $row['estate_name'] . '"  type="button" class="btn btn-outline-danger btn-sm" id="deletebutton">
         <i class="fa fa-trash" aria-hidden="true"></i> DELETE</button>
         <button id="updatebutton" data-id="' . $row['id'] . '" data-names="' . $row['estate_name'] . '" type="button" class="binto btn btn-primary btn-sm">

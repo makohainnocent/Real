@@ -14,7 +14,7 @@
     </header>
     <?php require('../../ui/sidebar.php') ?>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
+    <div class="height-100 bg-light mt-3">
         <h4>Main Components</h4>
 
 
@@ -30,9 +30,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Units</th>
-                        <th scope="col">Owner</th>
-                        <th scope="col">Location</th>
+                        <th scope="col">Ocuppied</th>
                         <th scope="col">Details</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -85,9 +83,7 @@
         );
 
 
-        /*function deleteEstate(id) {
-            var name = $('#deletebutton').attr('data-names');
-        }*/
+
 
         var id;
         var name;
@@ -144,7 +140,7 @@
         function addEstate() {
             $.get("../functions/get_owners.php", function(data) {
                 // Display the returned data in browser
-                $("#result").html(data);
+                $("#owner_id").html(data);
             });
             $('#addestate').click(
                 function() {
@@ -157,7 +153,7 @@
 
 
 
-                    if (names != "" && location != "" && details != "") {
+                    if (names != "" && location != "" && details != "" && owner_id !== "") {
                         $.ajax({
                             url: "../functions/add_estate.php",
                             type: "POST",
@@ -186,7 +182,7 @@
                         });
                     } else {
                         alert('Please fill all the fields!');
-                        $("#addowner").removeAttr("disabled");
+                        $("#addestate").removeAttr("disabled");
                     }
                 }
             );

@@ -30,14 +30,14 @@
                     <div class="form-group">
                         <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Owner:</label>
-                        <select class="form-select" aria-label="Default select example" id="result">
+                        <select class="form-select" aria-label="Default select example" id="owner_id">
                             
                         </select>
                     </div>
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Details:</label>
-                        <input type="text" class="form-control" id="estate_details">
+                        <label for="estate_details" class="col-form-label">Details:</label>
+                        <textarea class="form-control" id="estate_details" rows="3"></textarea>
                     </div>
                 </form>
             </div>
@@ -56,7 +56,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Update Owner</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Update Estate</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -66,16 +66,18 @@
                         <input type="text" class="form-control" id="ownerName">
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Contact:</label>
-                        <input type="text" class="form-control" id="ownerContact">
+                        <label for="recipient-name" class="col-form-label">Location:</label>
+                        <input type="text" class="form-control" id="estate_location">
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">NIN:</label>
-                        <input type="text" class="form-control" id="ownerNin">
+                            <label for="recipient-name" class="col-form-label">Owner:</label>
+                            <select class="form-select" aria-label="Default select example" id="owner_id">
+                    
+                            </select>
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Bank A/C:</label>
-                        <input type="text" class="form-control" id="ownerBank">
+                        <label for="estate_details" class="col-form-label">Details:</label>
+                        <textarea class="form-control" id="estate_details" rows="3"></textarea>
                     </div>
                 </form>
             </div>
