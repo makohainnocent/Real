@@ -83,26 +83,26 @@
         );
 
 
-
-
-        var id;
-        var name;
-        var contact;
-        var nin;
-        var bank;
+        var estate_id;
+        var estate_name;
+        var estate_location;
+        var estate_owner_id;
+        var estate_details;
         $(document).ready(function() {
             $(document).on('click', '#updatebutton', function() {
-                id = $(this).attr('data-id');
-                name = $(this).attr('data-names');
-                contact = $(this).attr('data-contact');
-                nin = $(this).attr('data-nin');
-                bank = $(this).attr('data-bank');
+                estate_id = $(this).attr('data-id');
+                estate_name = $(this).attr('data-names');
+                estate_location = $(this).attr('data-location');
+                estate_owner_id = $(this).attr('data-owner-id');
+                estate_owner_names = $(this).attr('data-owner-names');
+                estate_details = $(this).attr('data-details');
 
                 $('#updateModal').modal('show');
-                $('#ownerName').val(name);
-                $('#ownerContact').val(contact);
-                $('#ownerNin').val(nin);
-                $('#ownerBank').val(bank);
+                $('#estateName').val(estate_name);
+                $('#estateLocation').val(estate_location);
+                var html_code = "<option selected value=" + owner_id + ">" + estate_owner_names + "</option>";
+                $('#ownerId').html(html_code);
+                $('#estateDetails').val(estate_details);
 
 
 

@@ -1,7 +1,7 @@
 <?php
 require("../../db_config.php");
 
-$sql = "SELECT estates.id as id ,estates.estate_name as estate_name ,estates.location as location,estates.details as details, owners.names as owner_names FROM estates INNER JOIN owners ON owners.id=estates.owner_id";
+$sql = "SELECT estates.id as id ,estates.estate_name as estate_name ,estates.location as location,estates.details as details,estates.owner_id as owner_id,owners.names as owner_names FROM estates INNER JOIN owners ON owners.id=estates.owner_id";
 $query = mysqli_query($conn, $sql);
 $number = 0;
 if (mysqli_num_rows($query) > 0) {
@@ -17,7 +17,7 @@ if (mysqli_num_rows($query) > 0) {
                                     <td><p class="text-muted"><small>' . ucfirst($row['details']) . '</small></p></td>
         <td><button data-id="' . $row['id'] . '" data-names="' . $row['estate_name'] . '"  type="button" class="btn btn-outline-danger btn-sm" id="deletebutton">
         <i class="fa fa-trash" aria-hidden="true"></i> DELETE</button>
-        <button id="updatebutton" data-id="' . $row['id'] . '" data-names="' . $row['estate_name'] . '" type="button" class="binto btn btn-primary btn-sm">
+        <button id="updatebutton" data-owner-names="' . $row['owner_names'] . '" data-owner-id="' . $row['owner_id'] . '" data-id="' . $row['id'] . '" data-names="' . $row['estate_name'] . '" data-location="' . $row['location'] . '" data-details="' . $row['details'] . '" type="button" class="binto btn btn-primary btn-sm">
         <i class="fa fa-edit" aria-hidden="true"></i> MODIFY</button>
         </td>	
 		</tr>';
