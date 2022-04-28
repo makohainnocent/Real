@@ -1,6 +1,3 @@
-
-# PropertyManager
-Hello
 The whole idea of this software came when i had issues recording and making receipts for tenants.
 so this software is addressing those issues which i shall mention below when i finish the entire project.
 
