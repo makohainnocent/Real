@@ -1,0 +1,91 @@
+<script>
+    $(document).ready(
+        function () {
+            displayEstates();
+            addEstate();
+
+        }
+    );
+</script>
+<div class="modal fade" id="add_owner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add New Estate</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="add_estate_form">
+                    <small style="color: red;">Only letters and numbers </small>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="estate_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Location:</label>
+                        <input type="text" class="form-control" id="estate_location">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Owner:</label>
+                            <select class="form-select" aria-label="Default select example" id="owner_id">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="estate_details" class="col-form-label">Details:</label>
+                        <textarea class="form-control" id="estate_details" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="addestate">
+                    <i class="fa fa-save" aria-hidden="true"></i>
+                    Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Estate</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Names:</label>
+                        <input type="text" class="form-control" id="estateName">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Location:</label>
+                        <input type="text" class="form-control" id="estateLocation">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Owner:</label>
+                        <select disabled class="form-select" aria-label="Default select example" id="ownerId">
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="estate_details" class="col-form-label">Details:</label>
+                        <textarea class="form-control" id="estateDetails" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="realupdate">
+                    <i class="fa fa-save" aria-hidden="true"></i>
+                    Update and Save</button>
+            </div>
+        </div>
+    </div>
+</div>
