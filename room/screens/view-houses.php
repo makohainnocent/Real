@@ -37,13 +37,11 @@
                     </tr>
                 </thead>
                 <tbody id="estates">
-                    <tr>
+                    <tr class="table-warning">
                         <th scope="row">1</th>
                         <td>
-                            <i class='bx bxs-home text-success h2'></i> Mark
+                            <i class='bx bxs-home text-primary h3'></i> Mark
                             <small><span class="text-muted">UGX 300,000</span></small>
-                            <div>
-                            </div>
                         </td>
                         <td>
                             <div class="form-check form-switch">
@@ -52,22 +50,24 @@
                             </div>
                         </td>
                         <td><span class="fw-bold">Mark</span><br /><small class="text-muted text-success"><i class="fas fa-phone    "></i> 0705659353</small></td>
-                        <td>@mdo</td>
+                        <td><span class="fw-bold text-danger">UGX 300,000</span></td>
                         <td></td>
                     </tr>
 
                     <tr>
                         <th scope="row">1</th>
-                        <td><i class='bx bxs-home text-primary h2'></i><i class='bx bx-layer nav_logo-icon'></i> Mark</td>
+                        <td>
+                            <i class='bx bxs-home text-primary h3'></i> Mark
+                            <small><span class="text-muted"><i>UGX 300,000</i></span></small>
+                        </td>
                         <td>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Vacant</label>
+                                <label class="text-muted form-check-label" for="flexSwitchCheckDefault"><small><i>Empty</i></small></label>
                             </div>
-                            <i class="fas fa-id-badge    "></i>
                         </td>
-                        <td>Mark twain</td>
-                        <td>@mdo</td>
+                        <td><span class="fw-bold">Mark &nbsp;</span><small class="text-muted"><i class="fas fa-phone    "></i> 0705659353</small></td>
+                        <td>0</td>
                         <td></td>
                     </tr>
 
@@ -171,32 +171,25 @@
 
         });
 
-        function addEstate() {
-            $.get("../functions/get_owners.php", function(data) {
+        function addUnit() {
+            /*$.get("../functions/get_owners.php", function(data) {
                 // Display the returned data in browser
                 $("#owner_id").html(data);
-            });
-            $('#addestate').click(
+            });*/
+            $('#addunit').click(
                 function() {
-                    $('#addestate').attr('disabled', 'disabled');
-                    var names = $('#estate_name').val();
-                    var location = $('#estate_location').val();
-                    var details = $('#estate_details').val();
-                    var owner_id = $('#owner_id').val();
+                    $('#addunit').attr('disabled', 'disabled');
+                    var unit_name = $('#unit_name').val();
+                    var rent = $('#unit_rent').val();
 
-
-
-
-                    if (names != "" && location != "" && details != "" && owner_id !== "") {
+                    if (unit_name != "" && rent != "") {
                         $.ajax({
-                            url: "../functions/add_estate.php",
+                            url: "../functions/add_room.php",
                             type: "POST",
 
                             data: {
-                                estate_name: names,
-                                owner: owner_id,
-                                estate_location: location,
-                                estate_details: details,
+                                unit_name: unit_name,
+                                rent: rent,
 
                             },
 
@@ -204,10 +197,10 @@
                             success: function(dataResult) {
                                 var dataResult = JSON.parse(dataResult);
                                 if (dataResult.statusCode == 200) {
-                                    $("#addestate").removeAttr("disabled");
-                                    alert(names + ' was sucessfully added to the database!');
+                                    $("#addunit").removeAttr("disabled");
+                                    alert(unit_name + ' was sucessfully added to the database!');
                                     //redisplay data
-                                    displayEstates();
+                                    //displayEstates();
                                     $('#add_estate_form').find(':input').val('');
                                 } else if (dataResult.statusCode == 201) {
                                     alert("Error occured !");

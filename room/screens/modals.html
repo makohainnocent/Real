@@ -1,8 +1,8 @@
 <script>
     $(document).ready(
         function () {
-            displayEstates();
-            addEstate();
+            //displayEstates();
+            addUnit();
 
         }
     );
@@ -12,7 +12,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Add New Estate</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Add New Room</h5>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -20,29 +20,16 @@
                 <form id="add_estate_form">
                     <small style="color: red;">Only letters and numbers </small>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Name:</label>
-                        <input type="text" class="form-control" id="estate_name">
+                        <label for="recipient-name" class="col-form-label">Unit Name:</label>
+                        <input type="text" class="form-control" id="unit_name">
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Location:</label>
-                        <input type="text" class="form-control" id="estate_location">
+                        <label for="recipient-name" class="col-form-label">Monthly Rent:</label>
+                        <input type="number" class="form-control" id="unit_rent">
                     </div>
-                    <div class="form-group">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Owner:</label>
-                            <select class="form-select" aria-label="Default select example" id="owner_id">
-
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="estate_details" class="col-form-label">Details:</label>
-                        <textarea class="form-control" id="estate_details" rows="3"></textarea>
-                    </div>
-                </form>
-            </div>
+                    <div class="m-5"></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="addestate">
+                <button type="button" class="btn btn-success" id="addunit">
                     <i class="fa fa-save" aria-hidden="true"></i>
                     Submit</button>
             </div>
