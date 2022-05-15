@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Owners</title>
+    <title>Units</title>
     <?php require('../../ui/obj_header.php') ?>
 </head>
 
@@ -36,40 +36,8 @@
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
-                <tbody id="estates">
-                    <tr class="table-warning">
-                        <th scope="row">1</th>
-                        <td>
-                            <i class='bx bxs-home text-primary h3'></i> Mark
-                            <small><span class="text-muted">UGX 300,000</span></small>
-                        </td>
-                        <td>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Vacant</label>
-                            </div>
-                        </td>
-                        <td><span class="fw-bold">Mark</span><br /><small class="text-muted text-success"><i class="fas fa-phone    "></i> 0705659353</small></td>
-                        <td><span class="fw-bold text-danger">UGX 300,000</span></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>
-                            <i class='bx bxs-home text-primary h3'></i> Mark
-                            <small><span class="text-muted"><i>UGX 300,000</i></span></small>
-                        </td>
-                        <td>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                <label class="text-muted form-check-label" for="flexSwitchCheckDefault"><small><i>Empty</i></small></label>
-                            </div>
-                        </td>
-                        <td><span class="fw-bold">Mark &nbsp;</span><small class="text-muted"><i class="fas fa-phone    "></i> 0705659353</small></td>
-                        <td>0</td>
-                        <td></td>
-                    </tr>
+                <tbody id="units">
+                    
 
                 </tbody>
             </table>
@@ -84,13 +52,13 @@
     <script>
         //buttons logic
 
-        function displayEstates() {
+        function displayUnits() {
             $.ajax({
-                url: "../functions/get_estates.php",
+                url: "../functions/get_units.php",
                 type: "POST",
                 cache: false,
                 success: function(data) {
-                    $('#estates').html(data);
+                    $('#units').html(data);
                 }
             });
         }
@@ -108,7 +76,7 @@
                                 id: id
                             },
                             success: function() {
-                                displayEstates();
+                                displayUnits();
                             }
                         });
                     }
@@ -158,7 +126,7 @@
                         if (dataResult.statusCode == 200) {
 
                             alert(estate_name + " Has been updated!");
-                            displayEstates();
+                            displayUnits();
                         } else {
                             alert('error ');
                         }
@@ -200,7 +168,7 @@
                                     $("#addunit").removeAttr("disabled");
                                     alert(unit_name + ' was sucessfully added to the database!');
                                     //redisplay data
-                                    //displayEstates();
+                                    displayUnits();
                                     $('#add_estate_form').find(':input').val('');
                                 } else if (dataResult.statusCode == 201) {
                                     alert("Error occured !");

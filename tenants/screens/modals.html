@@ -1,0 +1,77 @@
+<script>
+  $(document).ready(
+    function() {
+      displayTenants();
+      addTenants();
+    
+    }
+      );
+</script>
+<div class="modal fade" id="add_owner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add Owner</h5>
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form id="add_user_form">
+          <small style="color: red;">Only letters and numbers </small>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Names:</label>
+              <input type="text" class="form-control" id="names">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Contact:</label>
+              <input type="text" class="form-control" id="contact">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">NIN:</label>
+              <input type="text" class="form-control" id="nin">
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="addowner">
+              <i class="fa fa-save" aria-hidden="true"></i>
+              Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Update Owner</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Names:</label>
+              <input type="text" class="form-control" id="ownerName">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Contact:</label>
+              <input type="text" class="form-control" id="ownerContact">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">NIN:</label>
+              <input type="text" class="form-control" id="ownerNin">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="realupdate">
+              <i class="fa fa-save" aria-hidden="true"></i>
+              Update and Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
