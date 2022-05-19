@@ -55,7 +55,7 @@
         //Change text of switch and show popup to insert user
         $(document).on('change', '.form-check-input', function() {
             if(this.checked) {
-                $('.status').html('Occupied');
+                $(this).siblings('label').html('Occupied');
                 $('#insert_tenant').modal('show');
                 $.get("../functions/select_tenants.php", function(data) {
                 // Display the returned data in browser
@@ -64,7 +64,8 @@
                 
             }
             else{
-                $('.status').html('Empty');
+                $(this).siblings('label').html('Empty');
+                
             }
         });
 
