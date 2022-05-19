@@ -11,7 +11,7 @@ if (mysqli_num_rows($query) > 0) {
         <td>' . $row['names'] . '</td>
         <td>' . $row['contact'] . '</td>
         <td>' . $row['nin'] . '</td>
-        <td><button onclick="deleteTenant(' . $row['id'] . ')" type="button" class="btn btn-danger btn-sm" id="deletebutton">
+        <td><button value="' . $row['names'] . '" data-id="' . $row['id'] . '" type="button" class="btn btn-danger btn-sm" id="deletebutton">
         <i class="fa fa-trash" aria-hidden="true"></i> DELETE</button>
         <button id="updatebutton" data-id="' . $row['id'] . '" data-names="' . $row['names'] . '" data-contact="' . $row['contact'] . '" data-nin="' . $row['nin'] . '" type="button" class="binto btn btn-primary btn-sm">
         <i class="fa fa-edit" aria-hidden="true"></i> MODIFY</button>

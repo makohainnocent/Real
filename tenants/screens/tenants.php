@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Owners</title>
+    <title>Tenants</title>
     <?php require('../../ui/obj_header.php') ?>
 </head>
 
@@ -62,9 +62,10 @@
 
 
 
-        function deleteTenant(id) {
-            var name = $('#updatebutton').attr('data-names');
-            if (confirm("Are sure you Want to delete " + name + "?!") == true) {
+        $(document).on('click', '#deletebutton', function() {
+            var name = $(this).val();
+            var id = $(this).attr('data-id');
+            if (confirm("Are sure you Want to delete dfsd " + name + "?!") == true) {
                 $.ajax({
                     url: '../functions/delete_tenant.php',
                     type: 'post',
@@ -76,7 +77,7 @@
                     }
                 });
             }
-        }
+        })
 
         var id;
         var name;

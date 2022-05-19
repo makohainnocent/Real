@@ -21,7 +21,7 @@
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: 0 1px 1px rgb(0 0 0 / 5%);">
 
 
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_house"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
 
 
 
@@ -51,6 +51,22 @@
     ?>
     <script>
         //buttons logic
+
+        //Change text of switch and show popup to insert user
+        $(document).on('change', '.form-check-input', function() {
+            if(this.checked) {
+                $('.status').html('Occupied');
+                $('#insert_tenant').modal('show');
+                $.get("../functions/select_tenants.php", function(data) {
+                // Display the returned data in browser
+                $("#tenant_id").html(data);
+            });
+                
+            }
+            else{
+                $('.status').html('Empty');
+            }
+        });
 
         function displayUnits() {
             $.ajax({

@@ -17,7 +17,7 @@ if (mysqli_num_rows($query) > 0) {
                 <td>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                        <label class="form-check-label text-muted " for="flexSwitchCheckDefault"><small><i>Empty</i></label>
+                        <label class="form-check-label text-muted " for="flexSwitchCheckDefault"><small><i class="status">Empty</i></label>
                     </div>
                 </td>
                 <td>

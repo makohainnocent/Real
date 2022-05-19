@@ -64,9 +64,11 @@
 
 
 
-        function deleteOwner(id) {
-            var name = $('#updatebutton').attr('data-names');
-            if (confirm("Are sure you Want to delete " + name + "?!") == true) {
+        //delete owner
+        $(document).on('click', '#deletebutton', function() {
+            var name=$(this).val();
+            var id = $(this).attr('data-id');
+            if (confirm("Are sure you Want to delete " + name + "?! of id "+id) == true) {
                 $.ajax({
                     url: '../functions/delete_owner.php',
                     type: 'post',
@@ -78,7 +80,7 @@
                     }
                 });
             }
-        }
+        })
 
         var id;
         var name;
