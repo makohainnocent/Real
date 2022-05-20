@@ -52,13 +52,32 @@
     <script>
         //buttons logic
 
-        
+        var room_id;
+        var room_name;
+        $(document).on('click', '#add_tenant_to_room', function() {
+            var tenant_id=$('#tenant_id').val();
+            alert(room_id+' '+tenant_id);
+
+            
+            if (confirm("Are sure you Want to delete " + name + "?!") == true) {
+                $.ajax({
+                    url: '../functions/insert_to_room.php',
+                    type: 'post',
+                    data: {
+                        tenant_id: tenant_id,
+                        id: room_id
+                    },
+                    success: function() {
+                        //displayUnits();
+                    }
+                });
+            }
+        })
         
         
         //Change text of switch and show popup to insert user
         $(document).on('change', '.form-check-input', function() {
-            var room_id;
-            var room_name;
+            
             if(this.checked) {
                 $(this).siblings('label').html('Occupied');
                 room_name=$(this).attr('data-name');
@@ -73,26 +92,7 @@
                 
                 
                 //add tenant to room
-                
-                $(document).on('click', '#add_tenant_to_room', function() {
-                    var tenant_id=$('#tenant_id').val();
-                    alert(room_id+' '+tenant_id);
 
-                    /*var name = $(this).attr('data-names');
-                    var id = $(this).attr('data-id');
-                    if (confirm("Are sure you Want to delete " + name + "?!") == true) {
-                        $.ajax({
-                            url: '../functions/delete_estate.php',
-                            type: 'post',
-                            data: {
-                                id: id
-                            },
-                            success: function() {
-                                displayUnits();
-                            }
-                        });
-                    }*/
-                })
                 
             }
             else{
