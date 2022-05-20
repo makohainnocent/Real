@@ -57,21 +57,19 @@
         $(document).on('click', '#add_tenant_to_room', function() {
             var tenant_id=$('#tenant_id').val();
             alert(room_id+' '+tenant_id);
-
             
-            if (confirm("Are sure you Want to delete " + name + "?!") == true) {
-                $.ajax({
-                    url: '../functions/insert_to_room.php',
-                    type: 'post',
+            $.ajax({
+                url: '../functions/insert_tenant_to_room.php',
+                type: 'post',
                     data: {
                         tenant_id: tenant_id,
                         id: room_id
                     },
                     success: function() {
-                        //displayUnits();
+                        alert('Tenant was added to the house')
+                        displayUnits();
                     }
                 });
-            }
         })
         
         
@@ -90,8 +88,6 @@
                     $("#tenant_id").html(data);
                 });
                 
-                
-                //add tenant to room
 
                 
             }
@@ -112,7 +108,7 @@
             });
         }
 
-        $(document).ready(
+        /*$(document).ready(
             function() {
                 $(document).on('click', '#deletebutton', function() {
                     var name = $(this).attr('data-names');
@@ -132,6 +128,7 @@
                 })
             }
         );
+        8*/
 
 
         var estate_id;
