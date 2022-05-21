@@ -1,7 +1,7 @@
 <?php
 require("../../db_config.php");
 
-$sql = "SELECT unit_name,monthly_rent FROM rooms";
+$sql = "SELECT id,unit_name,monthly_rent FROM rooms";
 $query = mysqli_query($conn, $sql);
 $number = 0;
 if (mysqli_num_rows($query) > 0) {
@@ -16,7 +16,7 @@ if (mysqli_num_rows($query) > 0) {
                 </td>
                 <td>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <input value="'.$row['id'].'" data-name="'.$row['unit_name'].'" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                         <label class="form-check-label text-muted " for="flexSwitchCheckDefault"><small><i class="status">Empty</i></label>
                     </div>
                 </td>

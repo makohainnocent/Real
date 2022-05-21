@@ -52,15 +52,47 @@
     <script>
         //buttons logic
 
+        
+        
+        
         //Change text of switch and show popup to insert user
         $(document).on('change', '.form-check-input', function() {
+            var room_id;
+            var room_name;
             if(this.checked) {
                 $(this).siblings('label').html('Occupied');
+                room_name=$(this).attr('data-name');
+                room_id=$(this).attr('value');
+                $('.insert-tenant-modal-title').text("Add Tenant to "+room_name);
                 $('#insert_tenant').modal('show');
+                
+                // Display the returned user names and id data in browser
                 $.get("../functions/select_tenants.php", function(data) {
-                // Display the returned data in browser
-                $("#tenant_id").html(data);
-            });
+                    $("#tenant_id").html(data);
+                });
+                
+                
+                //add tenant to room
+                
+                $(document).on('click', '#add_tenant_to_room', function() {
+                    var tenant_id=$('#tenant_id').val();
+                    alert(room_id+' '+tenant_id);
+
+                    /*var name = $(this).attr('data-names');
+                    var id = $(this).attr('data-id');
+                    if (confirm("Are sure you Want to delete " + name + "?!") == true) {
+                        $.ajax({
+                            url: '../functions/delete_estate.php',
+                            type: 'post',
+                            data: {
+                                id: id
+                            },
+                            success: function() {
+                                displayUnits();
+                            }
+                        });
+                    }*/
+                })
                 
             }
             else{
