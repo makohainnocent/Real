@@ -56,6 +56,8 @@
         var room_name;
         $(document).on('click', '#add_tenant_to_room', function() {
             var tenant_id=$('#tenant_id').val();
+            var date=$('#date').val();
+            
             alert(room_id+' '+tenant_id);
             
             $.ajax({
@@ -63,7 +65,8 @@
                 type: 'post',
                     data: {
                         tenant_id: tenant_id,
-                        id: room_id
+                        id: room_id,
+                        date:date
                     },
                     success: function() {
                         alert('Tenant was added to the house')
@@ -92,7 +95,27 @@
                 
             }
             else{
-                $(this).siblings('label').html('Empty');
+                //remove tenant from house
+                room_name=$(this).attr('data-name');
+                if (confirm("Are you sure you want to make this house vacant? "+room_name)) {
+                    
+                    room_id=$(this).attr('value');
+                    $.ajax({
+                    url: '../functions/remove_tenant.php',
+                    type: 'post',
+                        data: {
+                            id: room_id
+                        },
+                        success: function() {
+                            alert('House is now vacant')
+                            displayUnits();
+                        }
+                    });
+                    $(this).siblings('label').html('Empty');
+                }
+                else{
+                    displayUnits();
+                }
                 
             }
         });
