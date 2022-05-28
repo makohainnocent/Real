@@ -12,7 +12,7 @@
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
-    <?php require('../../ui/sidebar.php') ?>
+    <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
     <div class="height-100 bg-light mt-3">
         <h4>Main Components</h4>
