@@ -52,6 +52,29 @@
     <script>
         //buttons logic
 
+        $(document).on('click', '#triger_receipt_popup', function() {
+            var tenant_names=$(this).attr('data-tenant-names');
+            $('.payment-receipt-modal-title').html('Make Payment Receipt for '+tenant_names);
+            $('#make_payment_receipt').modal('show');
+
+            $.ajax({
+                url: '../functions/insert_tenant_to_room.php',
+                type: 'post',
+                    data: {
+                        tenant_id: tenant_id,
+                        id: room_id,
+                        date:date
+                    },
+                    success: function() {
+                        alert('Tenant was added to the house')
+                        displayUnits();
+                    }
+                });
+
+        }
+        );
+
+
         var room_id;
         var room_name;
         $(document).on('click', '#add_tenant_to_room', function() {

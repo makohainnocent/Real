@@ -8,6 +8,49 @@
     );
 </script>
 
+<!--Make Payment receipt-->
+<div class="modal fade" id="make_payment_receipt" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="payment-receipt-modal-title" id="staticBackdropLabel"></h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                    <small style="color: red;">Only letters and numbers </small>
+                    <div class="form-group mb-2">
+                        <label for="recipient-name" class="col-form-label">Payment Method:</label>
+                        <select class="form-select" aria-label="Default select example" id="payment">
+                            <option>Cash</option>
+                            <option>Bank</option>
+                            <option>Mobile Money</option>
+                            
+                            
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="date" class="col-form-label">Amount:</label>
+                        <input type="number" id="amount" class="form-control" required>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="date" class="col-form-label">Amount:</label>
+                        <input type="date" id="amount" class="form-control" required>
+                    </div>
+                    </form>
+                    </div>
+    
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="add_tenant_to_room">
+                    <i class="fa fa-save" aria-hidden="true"></i>
+                    Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--Insert Tenant Modal-->
 <div class="modal fade" id="insert_tenant" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

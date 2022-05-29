@@ -10,6 +10,7 @@ if (mysqli_num_rows($query) > 0) {
         if ($row['room_status']==1) {
             $room_status='checked';
             $description='Occupied';
+            $disabled='';
         }
         else{
             $room_status='';
@@ -22,6 +23,8 @@ if (mysqli_num_rows($query) > 0) {
         else{
             $tenant_contact='This house is vacant';
             $room_status='';
+            //disable receipt butto when house is vacant
+            $disabled='disabled';
 
         }
         echo '
@@ -42,7 +45,7 @@ if (mysqli_num_rows($query) > 0) {
                 '.$tenant_contact.'</small>
                 </td>
                 <td><span class="fw-bold text-danger">UGX 300,000</span></td>
-                        <td></td>
+                        <td><button '.$disabled.' data-tenant-names="'.$row['tenant_names'].'" id="triger_receipt_popup" type="button" class="btn btn-success btn-sm"><i class="fas fa-receipt"></i> RECEIPT</button></td>
         </tr>
         ';
     }

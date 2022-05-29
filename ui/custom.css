@@ -1,5 +1,6 @@
 body{
     background-color:#f5f5f5;
+
 }
 
 
@@ -91,6 +92,7 @@ a {
     overflow: hidden
 }
 
+
 .nav_logo,
 .nav_link {
     display: grid;
@@ -115,10 +117,12 @@ a {
 }
 
 .nav_link {
+    text-decoration: none !important;
     position: relative;
     color: var(--first-color-light);
     margin-bottom: 1.5rem;
-    transition: .3s
+    transition: .3s;
+    
 }
 
 .nav_link:hover {
@@ -126,7 +130,7 @@ a {
 }
 
 .nav_icon {
-    font-size: 1.25rem
+    font-size: 1.25rem;
 }
 
 .show {
