@@ -52,28 +52,48 @@
     <script>
         //buttons logic
 
+        //display modal to show all previous receipts
+         $(document).on('click', 'tr', function() {
+             var id=$(this).attr('id');
+             $('#show_receipts').modal('show');
+         });
+
+
+        //first popup the receip form
+        var room_id='';
         $(document).on('click', '#triger_receipt_popup', function() {
             var tenant_names=$(this).attr('data-tenant-names');
+            room_id=$(this).attr('data-room-id');
             $('.payment-receipt-modal-title').html('Make Payment Receipt for '+tenant_names);
             $('#make_payment_receipt').modal('show');
+            
+            
+            
+        }
+        );
+        
+        //then insert the receipt on butto click
+        $(document).on('click', '#insert_payment_receipt', function() {
+            var amount=$('#receipt_amount').val();
+            var date=$('#receipt_date').val();
+
+            console.log(amount+"and room id is "+room_id);
 
             $.ajax({
-                url: '../functions/insert_tenant_to_room.php',
+                url: '../functions/make_receipt.php',
                 type: 'post',
                     data: {
-                        tenant_id: tenant_id,
-                        id: room_id,
-                        date:date
+                        room_id:room_id,
+                        receipt_amount:amount,
+                        receipt_date:date
                     },
                     success: function() {
-                        alert('Tenant was added to the house')
+                        alert('Receipt was made')
                         displayUnits();
                     }
                 });
-
-        }
-        );
-
+            
+        });
 
         var room_id;
         var room_name;

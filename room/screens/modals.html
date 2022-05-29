@@ -8,6 +8,38 @@
     );
 </script>
 
+<!--Modal to display receipts of a particular house-->
+<div class="modal fade" id="show_receipts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="insert-tenant-modal-title" id="staticBackdropLabel">Receipts for house </h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <table>
+                    <tr>
+                        <thead>
+                            <td>Date</td><td>Method</td><td>Amount</td>
+                        </thead>
+                </tr>
+                </table>
+
+            </div>
+    
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="add_tenant_to_room">
+                    <i class="fa fa-save" aria-hidden="true"></i>
+                    Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!--Make Payment receipt-->
 <div class="modal fade" id="make_payment_receipt" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -32,18 +64,18 @@
 
                     <div class="form-group mb-2">
                         <label for="date" class="col-form-label">Amount:</label>
-                        <input type="number" id="amount" class="form-control" required>
+                        <input type="number" id="receipt_amount" class="form-control" required>
                     </div>
 
                     <div class="form-group mb-2">
-                        <label for="date" class="col-form-label">Amount:</label>
-                        <input type="date" id="amount" class="form-control" required>
+                        <label for="date" class="col-form-label">Date:</label>
+                        <input type="date" id="receipt_date" class="form-control" required>
                     </div>
                     </form>
                     </div>
     
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="add_tenant_to_room">
+                <button type="button" class="btn btn-success" id="insert_payment_receipt">
                     <i class="fa fa-save" aria-hidden="true"></i>
                     Submit</button>
             </div>

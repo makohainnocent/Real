@@ -28,7 +28,7 @@ if (mysqli_num_rows($query) > 0) {
 
         }
         echo '
-        <tr class="">
+        <tr class="" id="'.$row['id'].'">
             <th scope="row">' . $number . '</th>
                 <td>
                     <i class="bx bxs-home text-primary h3"></i> '.$row['unit_name'].'<br>
@@ -45,7 +45,7 @@ if (mysqli_num_rows($query) > 0) {
                 '.$tenant_contact.'</small>
                 </td>
                 <td><span class="fw-bold text-danger">UGX 300,000</span></td>
-                        <td><button '.$disabled.' data-tenant-names="'.$row['tenant_names'].'" id="triger_receipt_popup" type="button" class="btn btn-success btn-sm"><i class="fas fa-receipt"></i> RECEIPT</button></td>
+                        <td><button data-room-id="'.$row['id'].'" '.$disabled.' data-tenant-names="'.$row['tenant_names'].'" id="triger_receipt_popup" type="button" class="btn btn-success btn-sm"><i class="fas fa-receipt"></i> RECEIPT</button></td>
         </tr>
         ';
     }
