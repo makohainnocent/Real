@@ -53,16 +53,31 @@
         //buttons logic
 
         //display modal to show all previous receipts
-         $(document).on('click', 'tr', function() {
-             var id=$(this).attr('id');
+         $(document).on('click', '#show_all_receipts_for_this_house', function() {
+             var id=$(this).attr('data-room-id');
+
+            $.ajax({
+                url: "../functions/get_receipts.php",
+                type: "POST",
+                data: {
+                        room_id:id,
+                    },
+                cache: false,
+                success: function(data) {
+                    $('#receipts_table').html(data);
+                }
+            });
+
              $('#show_receipts').modal('show');
          });
 
 
         //first popup the receip form
         var room_id='';
+        var estate_id='';
         $(document).on('click', '#triger_receipt_popup', function() {
             var tenant_names=$(this).attr('data-tenant-names');
+            estate_id=$(this).attr('data-estate-id');
             room_id=$(this).attr('data-room-id');
             $('.payment-receipt-modal-title').html('Make Payment Receipt for '+tenant_names);
             $('#make_payment_receipt').modal('show');
@@ -74,21 +89,39 @@
         
         //then insert the receipt on butto click
         $(document).on('click', '#insert_payment_receipt', function() {
+
+            var payment=$('#payment_method').val();
             var amount=$('#receipt_amount').val();
             var date=$('#receipt_date').val();
-
-            console.log(amount+"and room id is "+room_id);
+            var description=$('#receipt_description').val();
 
             $.ajax({
                 url: '../functions/make_receipt.php',
                 type: 'post',
                     data: {
                         room_id:room_id,
-                        receipt_amount:amount,
+                        //receipt_amount:amount,
                         receipt_date:date
                     },
                     success: function() {
                         alert('Receipt was made')
+                        displayUnits();
+                    }
+                });
+
+                 $.ajax({
+                url: '../functions/insert_receipt.php',
+                type: 'post',
+                    data: {
+                        estate_id:estate_id,
+                        room_id:room_id,
+                        receipt_amount:amount,
+                        receipt_date:date,
+                        method:payment,
+                        description:description
+                    },
+                    success: function() {
+                        alert('Receipt was successfully inserted')
                         displayUnits();
                     }
                 });

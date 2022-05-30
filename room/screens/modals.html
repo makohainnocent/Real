@@ -20,13 +20,20 @@
 
             <div class="modal-body">
 
-                <table>
+                <table class="table table-hover mt-3 mx-auto caption-top">
+                <thead class="thead-light">
                     <tr>
-                        <thead>
-                            <td>Date</td><td>Method</td><td>Amount</td>
-                        </thead>
-                </tr>
-                </table>
+                        <th scope="col">Date</th>
+                        <th scope="col">Payment Method</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody id="receipts_table">
+                    
+
+                </tbody>
+            </table>
 
             </div>
     
@@ -53,7 +60,7 @@
                     <small style="color: red;">Only letters and numbers </small>
                     <div class="form-group mb-2">
                         <label for="recipient-name" class="col-form-label">Payment Method:</label>
-                        <select class="form-select" aria-label="Default select example" id="payment">
+                        <select class="form-select" aria-label="Default select example" id="payment_method">
                             <option>Cash</option>
                             <option>Bank</option>
                             <option>Mobile Money</option>
@@ -70,6 +77,11 @@
                     <div class="form-group mb-2">
                         <label for="date" class="col-form-label">Date:</label>
                         <input type="date" id="receipt_date" class="form-control" required>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="date" class="col-form-label">Description:</label>
+                        <input type="text" id="receipt_description" class="form-control" required>
                     </div>
                     </form>
                     </div>

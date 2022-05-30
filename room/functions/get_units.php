@@ -1,7 +1,7 @@
 <?php
 require("../../db_config.php");
 
-$sql = "SELECT rooms.vacancy as room_status,rooms.id as id,unit_name,monthly_rent,tenants.names as tenant_names,tenants.contact as tenant_contact FROM rooms LEFT JOIN tenants ON rooms.tenant_id=tenants.id ORDER BY rooms.vacancy";
+$sql = "SELECT rooms.estate_id as estate_id,rooms.vacancy as room_status,rooms.id as id,unit_name,monthly_rent,tenants.names as tenant_names,tenants.contact as tenant_contact FROM rooms LEFT JOIN tenants ON rooms.tenant_id=tenants.id ORDER BY rooms.vacancy";
 $query = mysqli_query($conn, $sql);
 $number = 0;
 if (mysqli_num_rows($query) > 0) {
@@ -45,7 +45,8 @@ if (mysqli_num_rows($query) > 0) {
                 '.$tenant_contact.'</small>
                 </td>
                 <td><span class="fw-bold text-danger">UGX 300,000</span></td>
-                        <td><button data-room-id="'.$row['id'].'" '.$disabled.' data-tenant-names="'.$row['tenant_names'].'" id="triger_receipt_popup" type="button" class="btn btn-success btn-sm"><i class="fas fa-receipt"></i> RECEIPT</button></td>
+                        <td><button data-estate-id="'.$row['estate_id'].'" data-room-id="'.$row['id'].'" '.$disabled.' data-tenant-names="'.$row['tenant_names'].'" id="triger_receipt_popup" type="button" class="btn btn-success btn-sm"><i class="fas fa-receipt"></i> RECEIPT</button> 
+                        <button data-room-id="'.$row['id'].'" id="show_all_receipts_for_this_house" type="button" class="btn btn-outline-warning btn-sm"><i class="fas fa-eye"></i> VIEW</button></td>
         </tr>
         ';
     }
