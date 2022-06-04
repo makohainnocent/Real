@@ -72,7 +72,7 @@
          });
 
 
-        //first popup the receip form
+        //first popup the receipt form
         var room_id='';
         var estate_id='';
         $(document).on('click', '#triger_receipt_popup', function() {
@@ -87,7 +87,7 @@
         }
         );
         
-        //then insert the receipt on butto click
+        //then insert the receipt on button click
         $(document).on('click', '#insert_payment_receipt', function() {
 
             var payment=$('#payment_method').val();
@@ -100,7 +100,7 @@
                 type: 'post',
                     data: {
                         room_id:room_id,
-                        //receipt_amount:amount,
+                        receipt_amount:amount,
                         receipt_date:date
                     },
                     success: function() {

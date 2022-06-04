@@ -13,7 +13,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "UPDATE rooms SET monthly_rent='$rent',last_receipt_date='$receipt_date' WHERE id='$room_id'";
+$sql = "UPDATE rooms SET balance=balance+'$rent',last_receipt_date='$receipt_date' WHERE id='$room_id'";
 
 if (mysqli_query($conn, $sql)) {
     echo json_encode(array("statusCode" => 200));
