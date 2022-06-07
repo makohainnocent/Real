@@ -1,70 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      @media print {
-        body {
-          -webkit-print-color-adjust: exact;
-        }
-      }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
   </head>
   <body>
     <div
-      id="divid"
       style="
-        margin: 0 auto;
-        width: 350px;
-        height: 500px;
-        background-color: blueviolet;
-        border: 1px solid black;
+        width: 302px;
+        border: 1px solid red;
+        text-align: center;
+        font-family: monospace;
+        font-size: 16px;
       "
     >
-      <h3>Hello</h3>
-      <input
-        type="button"
-        name="btnprint"
-        value="Print"
-        onclick="PrintMe('divid')"
-      />
+      <p>
+        <b>Company</b><br />
+        0705659353<br />
+        <i>Mon Jun 06 2022</i>
+        <br />
+        *****************************
+      </p>
+      <p></p>
+      <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+        <li>Coffee</li>
+        <li>Tea</li>
+      </ul>
+      *****************<br />
+      THANK YOU <br />*****************
     </div>
 
-    <script>
-      const canvas = document.querySelector("canvas");
-      const ctx = canvas.getContext("2d");
-      ctx.fillStyle = "green";
-      ctx.fillRect(10, 10, 100, 100);
+    <a id="clickbind" href="#">Click</a>
 
-      function PrintMe(DivID) {
-        var disp_setting = "toolbar=yes,location=no,";
-        disp_setting += "directories=yes,menubar=yes,";
-        disp_setting +=
-          "scrollbars=yes,width=650, height=600, left=100, top=25";
-        var content_vlue = document.getElementById(DivID).innerHTML;
-        var docprint = window.open("", "", disp_setting);
-        docprint.document.open();
-        docprint.document.write(
-          '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"'
-        );
-        docprint.document.write(
-          '"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'
-        );
-        docprint.document.write(
-          '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">'
-        );
-        docprint.document.write("<head><title>My Title</title>");
-        docprint.document.write('<style type="text/css">body{ margin:0px;');
-        docprint.document.write("font-family:verdana,Arial;color:#000;");
-        docprint.document.write(
-          "font-family:Verdana, Geneva, sans-serif; font-size:12px;}"
-        );
-        docprint.document.write("a{color:#000;text-decoration:none;} </style>");
-        docprint.document.write('</head><body onLoad="self.print()"><center>');
-        docprint.document.write(content_vlue);
-        docprint.document.write("</center></body></html>");
-        docprint.document.close();
-        docprint.focus();
+    <script>
+      function onClick() {
+        var pdf = new jsPDF("p", "mm", [80, 95]);
+
+        pdf.fromHTML(document.body);
+
+        pdf.save("tester.pdf");
       }
+
+      var element = document.getElementById("clickbind");
+      element.addEventListener("click", onClick);
+
+      let date = new Date();
+      console.log(date.toDateString());
     </script>
   </body>
 </html>
