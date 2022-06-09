@@ -11,7 +11,7 @@ if (mysqli_num_rows($query) > 0) {
     while ($row = mysqli_fetch_assoc($query)) {
         
         //notifier
-        if ($row['days']==30 and ($row['lnd'] != $current_date)) {
+        if ($row['days']>=30 and ($row['lnd'] != $current_date)) {
             $rent=$row['monthly_rent'];
             $room_id=$row['id'];
 
@@ -23,9 +23,11 @@ if (mysqli_num_rows($query) > 0) {
             }
         }
 
+        $balance_color="text-danger";
+        if ($row['balance']>=0) {
+            $balance_color="text-success";
+        }
 
-
-        $number += 1;
         $last_receipt_date="";
         if (empty($row['lrd'])) {
             $last_receipt_date='';
@@ -33,8 +35,9 @@ if (mysqli_num_rows($query) > 0) {
         else{
             $last_receipt_date=date("D, jS M Y",strtotime($row['lrd']));
         }
-
-
+        
+        
+        $number += 1;
         if ($row['room_status']==1) {
             $room_status='checked';
             $description='Occupied';
@@ -72,7 +75,7 @@ if (mysqli_num_rows($query) > 0) {
                 <span class="fw-bold">'.$row['tenant_names'].'</span><br /><small class="text-muted text-success"> 
                 '.$tenant_contact.'</small>
                 </td>
-                <td><span class="fw-bold text-danger">UGX '.number_format($row['balance']).'</span>'.$row['days'].'</td>
+                <td><span class="fw-bold '.$balance_color.'">UGX '.number_format($row['balance']).'</span>'.$row['days'].'</td>
                 <td><small style="font-size:13px;" class="text-muted"><i>'.$last_receipt_date.'<i/><br>'.$row['rd'].'<small></td>
                         <td><button data-estate-id="'.$row['estate_id'].'" data-room-id="'.$row['id'].'" '.$disabled.' data-tenant-names="'.$row['tenant_names'].'" id="triger_receipt_popup" type="button" class="btn btn-success btn-sm"><i class="fas fa-receipt"></i> RECEIPT</button> 
                         <button data-room-id="'.$row['id'].'" id="show_all_receipts_for_this_house" type="button" class="btn btn-outline-warning btn-sm"><i class="fas fa-eye"></i> VIEW</button></td>
