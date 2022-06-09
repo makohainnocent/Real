@@ -3,18 +3,20 @@ require("../../db_config.php");
 
 //$reminder_sql="SELECT DATEDIFF(DAY,last_receipt_date,GETDATE())";
 
-$sql = "SELECT DATEDIFF(CURDATE(),last_receipt_date) as days,rooms.balance as balance,rooms.estate_id as estate_id,rooms.vacancy as room_status,rooms.id as id,unit_name,monthly_rent,tenants.names as tenant_names,tenants.contact as tenant_contact FROM rooms LEFT JOIN tenants ON rooms.tenant_id=tenants.id ORDER BY rooms.vacancy";
+$sql = "SELECT receipts.description as rd,last_notified_date as lnd,last_receipt_date as lrd,DATEDIFF(CURDATE(),last_receipt_date) as days,rooms.balance as balance,rooms.estate_id as estate_id,rooms.vacancy as room_status,rooms.id as id,unit_name,monthly_rent,tenants.names as tenant_names,tenants.contact as tenant_contact FROM rooms LEFT JOIN tenants ON rooms.tenant_id=tenants.id LEFT JOIN receipts ON rooms.last_receipt_date=receipts.date ORDER BY rooms.vacancy,rooms.id";
 $query = mysqli_query($conn, $sql);
 $number = 0;
+$current_date=date("Y-m-d");
 if (mysqli_num_rows($query) > 0) {
     while ($row = mysqli_fetch_assoc($query)) {
         
         //notifier
-        if ($row['days']==30) {
+        if ($row['days']==30 and ($row['lnd'] != $current_date)) {
             $rent=$row['monthly_rent'];
             $room_id=$row['id'];
 
-            $sql2="UPDATE rooms SET balance=balance-'$rent' WHERE id='$room_id'";
+            $sql2="UPDATE rooms SET balance=balance-'$rent',last_notified_date=CURDATE() WHERE id='$room_id'";
+            
             
             if (mysqli_query($conn, $sql2)) {
 
@@ -24,6 +26,15 @@ if (mysqli_num_rows($query) > 0) {
 
 
         $number += 1;
+        $last_receipt_date="";
+        if (empty($row['lrd'])) {
+            $last_receipt_date='';
+        }
+        else{
+            $last_receipt_date=date("D, jS M Y",strtotime($row['lrd']));
+        }
+
+
         if ($row['room_status']==1) {
             $room_status='checked';
             $description='Occupied';
@@ -62,6 +73,7 @@ if (mysqli_num_rows($query) > 0) {
                 '.$tenant_contact.'</small>
                 </td>
                 <td><span class="fw-bold text-danger">UGX '.number_format($row['balance']).'</span>'.$row['days'].'</td>
+                <td><small style="font-size:13px;" class="text-muted"><i>'.$last_receipt_date.'<i/><br>'.$row['rd'].'<small></td>
                         <td><button data-estate-id="'.$row['estate_id'].'" data-room-id="'.$row['id'].'" '.$disabled.' data-tenant-names="'.$row['tenant_names'].'" id="triger_receipt_popup" type="button" class="btn btn-success btn-sm"><i class="fas fa-receipt"></i> RECEIPT</button> 
                         <button data-room-id="'.$row['id'].'" id="show_all_receipts_for_this_house" type="button" class="btn btn-outline-warning btn-sm"><i class="fas fa-eye"></i> VIEW</button></td>
         </tr>

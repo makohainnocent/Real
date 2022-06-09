@@ -33,6 +33,7 @@
                         <th scope="col">Status</th>
                         <th scope="col">Tenant Name</th>
                         <th scope="col">Balance</th>
+                        <th scope="col">Prev Receipt</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
