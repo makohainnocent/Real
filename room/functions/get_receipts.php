@@ -15,13 +15,13 @@ if (mysqli_num_rows($query) > 0) {
         <i class="fas fa-receipt text-primary"></i>
         <small class="text-muted"> '.$row['payment_method'].'</small>
         </td>
-        <td style="vertical-align: middle;text-align:center"><small class="text-muted">'.$row['date'].'</small><br> '.$row['amount'].'</td>
-        <td style="vertical-align: middle;"><small>'.$row['amount'].'<small></td>
+        <td ><small style="white-space: nowrap;" class="text-muted">'.date("D, jS M Y",strtotime($row['date'])).'</small><br> '.$row['amount'].'</td>
+        <td style="vertical-align: middle;"><small class="text-danger">'.$row['amount'].'<small></td>
         <td style="vertical-align: middle;"><small class="text-muted">'.$row['description'].'<small></td>
-        <td style="vertical-align: middle;">
-        <i class="fa fa-download"></i>
-        <i class="fa fa-envelope"></i>
-        <i class="fa fa-print"></i>
+        <td  style="vertical-align: middle;white-space: nowrap;">
+        <i style="cursor:pointer" title="Download this receipt" class="fa fa-download p-1 text-warning"></i>
+        <i style="cursor:pointer" title="Send via Email" class="fa fa-envelope p-1 text-success" ></i>
+        <i style="cursor:pointer" title="Print this receipt" class="fa fa-print p-1 text-primary"></i>
         </td>
         </tr>
         ';

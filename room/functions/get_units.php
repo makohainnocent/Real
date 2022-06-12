@@ -78,7 +78,7 @@ if (mysqli_num_rows($query) > 0) {
                 <td><span class="fw-bold '.$balance_color.'">UGX '.number_format($row['balance']).'</span>'.$row['days'].'</td>
                 <td><small style="font-size:13px;" class="text-muted"><i>'.$last_receipt_date.'<i/><br>'.$row['rd'].'<small></td>
                         <td><button data-estate-id="'.$row['estate_id'].'" data-room-id="'.$row['id'].'" '.$disabled.' data-tenant-names="'.$row['tenant_names'].'" id="triger_receipt_popup" type="button" class="btn btn-success btn-sm"><i class="fas fa-receipt"></i> RECEIPT</button> 
-                        <button data-room-id="'.$row['id'].'" id="show_all_receipts_for_this_house" type="button" class="btn btn-outline-warning btn-sm"><i class="fas fa-eye"></i> VIEW</button></td>
+                        <button data-room-name="'.$row['unit_name'].'" data-room-id="'.$row['id'].'" id="show_all_receipts_for_this_house" type="button" class="btn btn-outline-warning btn-sm"><i class="fas fa-eye"></i> VIEW</button></td>
         </tr>
         ';
     }

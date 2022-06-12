@@ -55,7 +55,9 @@
 
         //display modal to show all previous receipts
          $(document).on('click', '#show_all_receipts_for_this_house', function() {
-             var id=$(this).attr('data-room-id');
+             var id = $(this).attr('data-room-id');
+             var room_name_for_title = $(this).attr('data-room-name');
+             $('.receipt-tenant-modal-title').html('Receipts for house '+room_name_for_title);
 
             $.ajax({
                 url: "../functions/get_receipts.php",
