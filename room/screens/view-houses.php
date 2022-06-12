@@ -22,7 +22,7 @@
 
 
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_house"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
-
+            
 
 
             <table class="table table-hover mt-3 mx-auto caption-top">
