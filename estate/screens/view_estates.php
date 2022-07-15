@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION['id'])) {
+    header('location:/real/index.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,19 +12,21 @@
     <?php require('../../ui/obj_header.php') ?>
 </head>
 
-<body id="body-pd" style="background-color:#f8f9fa !important;">
+<body id="body-pd" style="background-color:#f6efe5 !important;">
 
-    <header class="header" id="header">
+    <header class="header" id="header" style="background-color:#fff;">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
     <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
-    <div class="height-100 bg-light mt-3">
+    <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
+    
+    <button style="width:60px;height:60px;background-color:yellow;font-size:50px"><i  class='bx bx-plus'></i></button>
         <h4>Main Components</h4>
 
 
-        <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: 0 1px 1px rgb(0 0 0 / 5%);">
+        <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
 
 
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>

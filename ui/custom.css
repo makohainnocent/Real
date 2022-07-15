@@ -79,7 +79,7 @@ a {
     left: -30%;
     width: var(--nav-width);
     height: 100vh;
-    background-color: var(--first-color);
+    background-color:#3ab36e;
     padding: .5rem 1rem 0 0;
     transition: .5s;
     z-index: var(--z-fixed)
@@ -120,7 +120,7 @@ a {
 .nav_link {
     text-decoration: none !important;
     position: relative;
-    color: var(--first-color-light);
+    color: #fff;
     margin-bottom: 1.5rem;
     transition: .3s;
     

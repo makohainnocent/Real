@@ -17,6 +17,13 @@
     <div class="height-100 bg-light mt-3">
         <h4>Main Components</h4>
 
+        <div class="table-wrapper mt-5 flex">
+            <div class=""></div>
+            <div class=""></div>
+            <div class=""></div>
+            <div class=""></div>
+        </div>
+
 
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: 0 1px 1px rgb(0 0 0 / 5%);">
 
