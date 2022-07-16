@@ -25,12 +25,12 @@ if (empty($_SESSION['id'])) {
 
 
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-
             
             
             <div>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> New Estate</button>
             </div>
+            <div class="no-data mt-3" style=";text-align:center;width:100%;"></div>
 
 
 
@@ -68,8 +68,8 @@ if (empty($_SESSION['id'])) {
                     
                     if (data==0) {
                          $('table').remove();
-                         var h ="<h1>Add new Estate</h1>";
-                         $('.table_wrapper').html(h);
+                         $( ".no-data" ).append(
+                             "<p style='padding:100px;'><i class='bx bx-grid-alt nav_icon display-1 rounded-circle' style='cursor:pointer;padding:50px;background-color:#3ab36e12;color:#3ab36e'></i><br><span class='h5'>Add your First Estate Here.</span><br><span class'text-muted'>Grouping housing units into an Estate will make your work easier and organised</span></p>" );
 
                     }
                     else{
