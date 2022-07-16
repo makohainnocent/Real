@@ -1,7 +1,14 @@
 <?php
+session_start();
+if (empty($_SESSION['id'])) {
+    header('location:/real/index.php');
+    }else {
+        $user_id = $_SESSION['id'];
+    }
+
 require("../../db_config.php");
 
-$sql = "SELECT estates.id as id ,estates.estate_name as estate_name ,estates.location as location,estates.details as details,estates.owner_id as owner_id,owners.names as owner_names FROM estates INNER JOIN owners ON owners.id=estates.owner_id";
+$sql = "SELECT estates.id as id ,estates.estate_name as estate_name ,estates.location as location,estates.details as details,estates.owner_id as owner_id,owners.names as owner_names FROM estates INNER JOIN owners  ON owners.id=estates.owner_id WHERE estates.user_id = '$user_id'";
 $query = mysqli_query($conn, $sql);
 $number = 0;
 if (mysqli_num_rows($query) > 0) {

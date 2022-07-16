@@ -22,13 +22,13 @@ if (empty($_SESSION['id'])) {
     <!--Container Main start-->
     <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
     
-    <button style="width:60px;height:60px;background-color:yellow;font-size:50px"><i  class='bx bx-plus'></i></button>
-        <h4>Main Components</h4>
+    <button style="font-size:30px;font-weight:bold;color:green;border:0;background-color:#fff;width:50px;height:50px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        
 
 
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
 
-
+            
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
 
 
