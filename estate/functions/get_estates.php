@@ -30,7 +30,7 @@ if (mysqli_num_rows($query) > 0) {
 		</tr>';
     }
 } else {
-    echo "<h2>No Estate to display,please add new</h2>";
+    echo 0;
     //echo json_encode(array("statusCode" => 201));
 }
 

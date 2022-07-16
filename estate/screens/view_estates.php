@@ -21,15 +21,16 @@ if (empty($_SESSION['id'])) {
     <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
     <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
-    
-    <button style="font-size:30px;font-weight:bold;color:green;border:0;background-color:#fff;width:50px;height:50px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
-        
+        <h4>Estates</h4>
 
 
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
 
             
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+            
+            <div>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+            </div>
 
 
 
@@ -64,7 +65,17 @@ if (empty($_SESSION['id'])) {
                 type: "POST",
                 cache: false,
                 success: function(data) {
-                    $('#estates').html(data);
+                    
+                    if (data==0) {
+                         $('table').remove();
+                         var h ="<h1>Add new Estate</h1>";
+                         $('.table_wrapper').html(h);
+
+                    }
+                    else{
+                        $('#estates').html(data);
+                    }
+                    
                 }
             });
         }
