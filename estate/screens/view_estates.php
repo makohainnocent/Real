@@ -14,22 +14,25 @@ if (empty($_SESSION['id'])) {
 
 <body id="body-pd" style="background-color:#f6efe5 !important;">
 
-    <header class="header" id="header" style="background-color:#fff;">
+    <header class="header" id="header" style="background-color:#fff0;">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
     <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
     <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
-        <h4>Estates</h4>
+        
 
         <div class="d-flex p-2 mt-5 justify-content-around">
 
             <div class="card card-box">
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
-                        <div class="d-flex flex-column align-self-center"><span class="h2">200</span></div><div><i class='bx bx-grid-alt nav_icon display-6 rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
-</span>
+                        <div class="d-flex flex-column align-self-center">
+                            <span class="h2">200</span>
+                            <span class="h5">Housing Units</span>
+                        </div>
+                        <div><i class='bx bx-grid-alt nav_icon font-size-lg rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
                     </div>
                     This is some text within a card body.
                 </div>
@@ -57,14 +60,13 @@ if (empty($_SESSION['id'])) {
         </div>
 
 
-        <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+        <div class="table-wrapper mt-5 mb-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
             
             
             <div>
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> New Estate</button>
             </div>
             <div class="no-data mt-3" style=";text-align:center;width:100%;"></div>
-
 
 
             <table class="table table-hover mt-3 mx-auto ">
@@ -82,6 +84,7 @@ if (empty($_SESSION['id'])) {
                 </tbody>
             </table>
         </div>
+        <div name="magin bottom" style="height:20px;"></div>
     </div>
 
 
@@ -102,7 +105,7 @@ if (empty($_SESSION['id'])) {
                     if (data==0) {
                          $('table').remove();
                          $( ".no-data" ).append(
-                             "<p style='padding:100px;'><i class='bx bx-grid-alt nav_icon display-1 rounded-circle' style='cursor:pointer;padding:50px;background-color:#3ab36e12;color:#3ab36e'></i><br><span class='h5'>Add your First Estate Here.</span><br><span class'text-muted'>Grouping housing units into an Estate will make your work easier and organised</span></p>" );
+                             "<p style='padding:50px;'><i class='bx bx-grid-alt nav_icon display-1 rounded-circle' style='margin-bottom:30px;padding:50px;background-color:#3ab36e12;color:#3ab36e'></i><br><span class='h5'>Create your First Estate Here.</span><br><span class='text-muted'>Grouping housing units into an Estate will make your work easier and organised</span></p>" );
 
                     }
                     else{
