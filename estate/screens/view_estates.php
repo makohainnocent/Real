@@ -23,6 +23,39 @@ if (empty($_SESSION['id'])) {
     <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
         <h4>Estates</h4>
 
+        <div class="d-flex p-2 mt-5 justify-content-around">
+
+            <div class="card card-box">
+                <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="d-flex flex-column align-self-center"><span class="h2">200</span></div><div><i class='bx bx-grid-alt nav_icon display-6 rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
+</span>
+                    </div>
+                    This is some text within a card body.
+                </div>
+            </div>
+
+            <div class="card card-box">
+                <div class="card-body">
+                    This is some text within a card body.
+                </div>
+            </div>
+
+            <div class="card card-box">
+                <div class="card-body">
+                    This is some text within a card body.
+                </div>
+            </div>
+
+            <div class="card card-box">
+                <div class="card-body">
+                    This is some text within a card body.
+                </div>
+            </div>
+
+
+        </div>
+
 
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
             
