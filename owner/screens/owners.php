@@ -6,19 +6,55 @@
     <?php require('../../ui/obj_header.php') ?>
 </head>
 
-<body id="body-pd" style="background-color:#f8f9fa !important;">
+<body id="body-pd" style="background-color:#f6efe5 !important;">
 
-    <header class="header" id="header">
+    <header class="header" id="header" style="background-color:#fff0;">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
     <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
-        <h4>Main Components</h4>
+    <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
 
 
-        <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: 0 1px 1px rgb(0 0 0 / 5%);">
+    <div class="d-flex p-2 mt-5 justify-content-around">
+
+<div class="card card-box">
+    <div class="card-body">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-column align-self-center">
+                <span class="h2">200</span>
+                <span class="h5">Housing Units</span>
+            </div>
+            <div><i class='bx bx-grid-alt nav_icon font-size-lg rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
+        </div>
+        This is some text within a card body.
+    </div>
+</div>
+
+<div class="card card-box">
+    <div class="card-body">
+        This is some text within a card body.
+    </div>
+</div>
+
+<div class="card card-box">
+    <div class="card-body">
+        This is some text within a card body.
+    </div>
+</div>
+
+<div class="card card-box">
+    <div class="card-body">
+        This is some text within a card body.
+    </div>
+</div>
+
+
+</div>
+
+
+        <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
 
 
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
