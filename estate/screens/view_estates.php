@@ -29,26 +29,44 @@ if (empty($_SESSION['id'])) {
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
                         <div class="d-flex flex-column align-self-center">
-                            <span class="h2">200</span>
-                            <span class="h5">Housing Units</span>
+                            <span class="h2 font-weight-bold" style="color:#41b271">200</span>
+                            <span class="h6">Housing Units</span>
                         </div>
-                        <div><i class='bx bx-grid-alt nav_icon font-size-lg rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
+                        <div><i class='bx bxs-building-house nav_icon rounded-circle h2' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
                     </div>
-                    This is some text within a card body.
+                    <small class="text-muted">This is some text within a card body.</small>
                 </div>
             </div>
 
-            <div class="card card-box">
-                <div class="card-body">
-                    This is some text within a card body.
-                </div>
-            </div>
 
             <div class="card card-box">
                 <div class="card-body">
-                    This is some text within a card body.
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="d-flex flex-column align-self-center">
+                            <span class="h2 font-weight-bold" style="color:#41b271">200</span>
+                            <span class="h6">Estates</span>
+                        </div>
+                        <div><i class='bx bxs-grid-alt nav_icon rounded-circle h2' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
+                    </div>
+                    <small class="text-muted">This is some text within a card body.</small>
                 </div>
             </div>
+
+
+            <div class="card card-box">
+                <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="d-flex flex-column align-self-center">
+                            <span class="h2 font-weight-bold" style="color:#41b271">200</span>
+                            <span class="h6">Property Owners</span>
+                        </div>
+                        <div><i class='bx bxs-user nav_icon rounded-circle h2' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
+                    </div>
+                    <small class="text-muted">This is some text within a card body.</small>
+                </div>
+            </div>
+
+            
 
             <div class="card card-box">
                 <div class="card-body">
@@ -61,16 +79,27 @@ if (empty($_SESSION['id'])) {
 
 
         <div class="table-wrapper mt-5 mb-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-            
-            
+        
+        <div class="header-container d-flex flex-row justify-content-end">
+
             <div>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> New Estate</button>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> New Estate</button>
             </div>
+    
+            <div class="flex-fill">
+                <h2 style="text-align:center" >
+                    Estates
+                </h2>
+            </div>
+
+        </div>          
+            
+
             <div class="no-data mt-3" style=";text-align:center;width:100%;"></div>
 
 
             <table class="table table-hover mt-3 mx-auto ">
-                <thead class="thead-light">
+                <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
@@ -83,6 +112,8 @@ if (empty($_SESSION['id'])) {
 
                 </tbody>
             </table>
+
+            
         </div>
         <div name="magin bottom" style="height:20px;"></div>
     </div>
