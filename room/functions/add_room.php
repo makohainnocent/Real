@@ -3,7 +3,7 @@
 require("../../db_config.php");
 
 $unit_name = clean($_POST['unit_name']);
-$estate_id = 10;
+$estate_id = 5;
 //clean($_POST['estate_id']);
 $rent = clean($_POST['rent']);
 
@@ -20,6 +20,7 @@ VALUES ('$unit_name','$rent','$estate_id')";
 if (mysqli_query($conn, $sql)) {
     echo json_encode(array("statusCode" => 200));
 } else {
+    
     echo json_encode(array("statusCode" => 201));
 }
 
