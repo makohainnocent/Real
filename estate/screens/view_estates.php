@@ -93,6 +93,15 @@ if (empty($_SESSION['id'])) {
     require("../screens/modals.html");
     ?>
     <script>
+        //click on an estate to view all houses
+        $(document).on('click','.this_estate',function(){
+            var estate_id=$(this).attr('data-real-estate-id');
+            window.location = '../../room/screens/view-houses.php?id='+estate_id;
+            //alert(estate_id);
+        }
+        )
+
+
         //buttons logic
 
         function displayEstates() {

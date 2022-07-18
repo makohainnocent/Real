@@ -4,6 +4,8 @@
 <head>
     <title>Units</title>
     <?php require('../../ui/obj_header.php') ?>
+    
+    
 </head>
 
 <body id="body-pd" style="background-color:#f8f9fa !important;">
@@ -56,6 +58,12 @@
 
     <?php
     require("../screens/modals.html");
+    ?>
+    <?php
+    echo "<script>
+    let this_estate_id=".$_GET['id']."
+    
+    </script>";
     ?>
     <script>
         //buttons logic
@@ -146,6 +154,7 @@
             
             alert(room_id+' '+tenant_id);
             
+            
             $.ajax({
                 url: '../functions/insert_tenant_to_room.php',
                 type: 'post',
@@ -210,8 +219,12 @@
             $.ajax({
                 url: "../functions/get_units.php",
                 type: "POST",
+                data: {
+                            id:this_estate_id
+                        },
                 cache: false,
                 success: function(data) {
+                    
                     $('#units').html(data);
                 }
             });

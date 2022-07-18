@@ -2,8 +2,8 @@
 require("../../db_config.php");
 
 //$reminder_sql="SELECT DATEDIFF(DAY,last_receipt_date,GETDATE())";
-
-$sql = "SELECT receipts.description as rd,last_notified_date as lnd,last_receipt_date as lrd,DATEDIFF(CURDATE(),last_receipt_date) as days,rooms.balance as balance,rooms.estate_id as estate_id,rooms.vacancy as room_status,rooms.id as id,unit_name,monthly_rent,tenants.names as tenant_names,tenants.contact as tenant_contact FROM rooms LEFT JOIN tenants ON rooms.tenant_id=tenants.id LEFT JOIN receipts ON rooms.last_receipt_date=receipts.date ORDER BY rooms.vacancy,rooms.id";
+$estate_id=$_POST['id'];
+$sql = "SELECT receipts.description as rd,last_notified_date as lnd,last_receipt_date as lrd,DATEDIFF(CURDATE(),last_receipt_date) as days,rooms.balance as balance,rooms.estate_id as estate_id,rooms.vacancy as room_status,rooms.id as id,unit_name,monthly_rent,tenants.names as tenant_names,tenants.contact as tenant_contact FROM rooms LEFT JOIN tenants ON rooms.tenant_id=tenants.id LEFT JOIN receipts ON rooms.last_receipt_date=receipts.date WHERE rooms.estate_id='$estate_id' ORDER BY rooms.vacancy,rooms.id";
 $query = mysqli_query($conn, $sql);
 $number = 0;
 $current_date=date("Y-m-d");
