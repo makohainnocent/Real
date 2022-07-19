@@ -3,8 +3,7 @@
 require("../../db_config.php");
 
 $unit_name = clean($_POST['unit_name']);
-$estate_id = 5;
-//clean($_POST['estate_id']);
+$estate_id = clean($_POST['estate_id']);
 $rent = clean($_POST['rent']);
 
 // Create connection

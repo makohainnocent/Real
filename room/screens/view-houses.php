@@ -326,6 +326,7 @@
                             data: {
                                 unit_name: unit_name,
                                 rent: rent,
+                                estate_id:this_estate_id
 
                             },
 
