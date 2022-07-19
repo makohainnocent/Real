@@ -2,6 +2,7 @@
 session_start();
 if (empty($_SESSION['id'])) {
     header('location:/real/index.php');
+    
     }
 ?>
 <!DOCTYPE html>
@@ -9,7 +10,10 @@ if (empty($_SESSION['id'])) {
 
 <head>
     <title>Owners</title>
-    <?php require('../../ui/obj_header.php') ?>
+    <?php 
+    require('../../ui/obj_header.php');
+   
+    ?>
 </head>
 
 <body id="body-pd" style="background-color:#f6efe5 !important;">
@@ -21,62 +25,8 @@ if (empty($_SESSION['id'])) {
     <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
     <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
-        
-
-        <div class="d-flex p-2 mt-5 justify-content-around">
-
-            <div class="card card-box">
-                <div class="card-body">
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="d-flex flex-column align-self-center">
-                            <span class="h2 font-weight-bold" style="color:#41b271">200</span>
-                            <span class="h6">Housing Units</span>
-                        </div>
-                        <div><i class='bx bxs-building-house nav_icon rounded-circle h2' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
-                    </div>
-                    <small class="text-muted">This is some text within a card body.</small>
-                </div>
-            </div>
-
-
-            <div class="card card-box">
-                <div class="card-body">
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="d-flex flex-column align-self-center">
-                            <span class="h2 font-weight-bold" style="color:#41b271">200</span>
-                            <span class="h6">Estates</span>
-                        </div>
-                        <div><i class='bx bxs-grid-alt nav_icon rounded-circle h2' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
-                    </div>
-                    <small class="text-muted">This is some text within a card body.</small>
-                </div>
-            </div>
-
-
-            <div class="card card-box">
-                <div class="card-body">
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="d-flex flex-column align-self-center">
-                            <span class="h2 font-weight-bold" style="color:#41b271">200</span>
-                            <span class="h6">Property Owners</span>
-                        </div>
-                        <div><i class='bx bxs-user nav_icon rounded-circle h2' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
-                    </div>
-                    <small class="text-muted">This is some text within a card body.</small>
-                </div>
-            </div>
-
-            
-
-            <div class="card card-box">
-                <div class="card-body">
-                    This is some text within a card body.
-                </div>
-            </div>
-
-
-        </div>
-
+    
+    <?php require('../functions/estate_stats.php'); ?>
 
         <div class="table-wrapper mt-5 mb-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
         
