@@ -18,12 +18,12 @@
                 </a>
                 
                 <a style="text-decoration:none;" href="/real/room/screens/view-houses.php" class="nav_link">
-                    <i class='bx bx-message-square-detail nav_icon'></i>
+                    <i class='bx bx-building-house nav_icon'></i>
                     <span class="nav_name">Houses</span>
                 </a>
                 
                 <a style="text-decoration:none;" href="/real/tenants/screens/tenants.php" class="nav_link">
-                    <i class='bx bx-bookmark nav_icon'></i>
+                    <i class='bx bx-user-circle nav_icon'></i>
                     <span class="nav_name">Tenants</span>
                 </a>
                 
