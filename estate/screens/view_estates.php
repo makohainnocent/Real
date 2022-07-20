@@ -13,6 +13,16 @@ if (empty($_SESSION['id'])) {
     <?php 
     require('../../ui/obj_header.php');
    
+    //get company name
+    require("../../db_config.php");
+    $get_company_name="SELECT company_name FROM users WHERE id=1";
+    $company_query=mysqli_query($conn,$get_company_name) or die(mysqli_connect_error());
+    if ($company_query) {
+       $row=$mysqli_fetch_assoc($company_query); 
+    }
+    else {
+        echo mysqli_connect_error();
+    }
     ?>
 </head>
 
@@ -20,7 +30,10 @@ if (empty($_SESSION['id'])) {
 
     <header class="header" id="header" style="background-color:#fff0;">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+        
+
+        <span class="h5 "><?php echo $row['company_name']; ?></span> 
+        <div class="header_img"><img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
     <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
