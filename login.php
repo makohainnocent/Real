@@ -11,7 +11,7 @@ else {
     $email=clean($_POST['email']);
     $password=clean($_POST['pass']);
     
-    $sql="SELECT id,company_name,details FROM users WHERE email='$email' AND password='$password'";
+    $sql="SELECT id,company_name FROM users WHERE email='$email' AND password='$password'";
     $query=@mysqli_query($conn,$sql);
     
     if($query){

@@ -77,9 +77,9 @@ require("../../db_config.php");
                     <span class="h2 font-weight-bold" style="color:#41b271">UGX</span>
                     <span class="h6">'.number_format($row4['total_revenue']).'</span>
                 </div>
-                <div><i class="bx bx-money nav_icon rounded-circle h2" style="padding:15px;background-color:#3ab36e12;color:#3ab36e" aria-hidden="true"></i></div>
+                <div><i class="bx bxs-bar-chart-alt-2 nav_icon rounded-circle h2" style="padding:15px;background-color:#3ab36e12;color:#3ab36e" aria-hidden="true"></i></div>
             </div>
-            <small class="text-muted">This is some text within a card body.</small>
+            <small class="text-muted">As of '.date('F').' </small>
         </div>
     </div>
 

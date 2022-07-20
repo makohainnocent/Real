@@ -2,28 +2,21 @@
 session_start();
 if (empty($_SESSION['id'])) {
     header('location:/real/index.php');
-    
     }
+    else {
+        
+    }
+    require('../../ui/obj_header.php');
+    
+    //get company name
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Owners</title>
-    <?php 
-    require('../../ui/obj_header.php');
-   
-    //get company name
-    require("../../db_config.php");
-    $get_company_name="SELECT company_name FROM users WHERE id=1";
-    $company_query=mysqli_query($conn,$get_company_name) or die(mysqli_connect_error());
-    if ($company_query) {
-       $row=$mysqli_fetch_assoc($company_query); 
-    }
-    else {
-        echo mysqli_connect_error();
-    }
-    ?>
+    
 </head>
 
 <body id="body-pd" style="background-color:#f6efe5 !important;">
@@ -32,7 +25,7 @@ if (empty($_SESSION['id'])) {
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         
 
-        <span class="h5 "><?php echo $row['company_name']; ?></span> 
+        <span class="h5 " style="font-weight:800;color:#3ab36e;"><?php echo strtoupper($_SESSION['company_name']); ?></span> 
         <div class="header_img"><img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
     <?php require('../../sidebar.php') ?>
