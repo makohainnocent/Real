@@ -32,23 +32,7 @@
     </div>
 </div>
 
-<div class="card card-box">
-    <div class="card-body">
-        This is some text within a card body.
-    </div>
-</div>
 
-<div class="card card-box">
-    <div class="card-body">
-        This is some text within a card body.
-    </div>
-</div>
-
-<div class="card card-box">
-    <div class="card-body">
-        This is some text within a card body.
-    </div>
-</div>
 
 
 </div>
@@ -71,7 +55,7 @@
 
             <table class="table table-hover mt-3 mx-auto ">
                 <thead>
-                    <tr class="table-info">
+                    <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Units</th>
