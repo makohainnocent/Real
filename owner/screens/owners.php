@@ -55,13 +55,22 @@
 
 
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+        
+        <div class="header-container d-flex flex-row justify-content-end">
+        <div>
+             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i>  New Owner</button>
+         </div>
+
+         <div class="flex-fill">
+                <h2 style="text-align:center" >
+                    Owners
+                </h2>
+            </div>
+         </div>
 
 
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
-
-
-            <table class="table  table-bordered table-hover mt-3 mx-auto ">
-                <thead class="border-0">
+            <table class="table table-hover mt-3 mx-auto ">
+                <thead>
                     <tr class="table-info">
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
@@ -104,7 +113,7 @@
         $(document).on('click', '#deletebutton', function() {
             var name=$(this).val();
             var id = $(this).attr('data-id');
-            if (confirm("Are sure you Want to delete " + name + "?! of id "+id) == true) {
+            if (confirm("Are sure you Want to delete " + name + "?!") == true) {
                 $.ajax({
                     url: '../functions/delete_owner.php',
                     type: 'post',
@@ -202,6 +211,8 @@
                                     $('#add_user_form').find(':input').val('');
                                 } else if (dataResult.statusCode == 201) {
                                     alert("Error occured !");
+                                    alert(dataResult.err);
+                                    $("#addowner").removeAttr("disabled");
                                 }
                             }
                         });

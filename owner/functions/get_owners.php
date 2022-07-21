@@ -1,7 +1,15 @@
 <?php
+session_start();
+if (empty($_SESSION['id'])) {
+    header('location:/real/index.php');
+    }
+    else {
+        $user_id = $_SESSION['id'];
+    }
+
 require("../../db_config.php");
 
-$sql = "SELECT id,names,contact,nin,bank FROM owners";
+$sql = "SELECT id,names,contact,nin,bank FROM owners WHERE user_id=".$user_id;
 $query = mysqli_query($conn, $sql);
 $number = 0;
 if (mysqli_num_rows($query) > 0) {

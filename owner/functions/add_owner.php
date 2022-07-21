@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (empty($_SESSION['id'])) {
+    header('location:/real/index.php');
+    }
+    else {
+        $user_id = $_SESSION['id'];
+    }
+
 require("../../db_config.php");
 
 $names = clean($_POST['names']);
@@ -13,14 +21,14 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO owners (names, contact, nin,bank)
-VALUES ('$names','$contact','$nin','$bank')";
+$sql = "INSERT INTO owners (names, contact, nin,bank,user_id)
+VALUES ('$names','$contact','$nin','$bank','$user_id')";
 
 if (mysqli_query($conn, $sql)) {
     echo json_encode(array("statusCode" => 200));
 }
 else {
-    echo json_encode(array("statusCode" => 201));
+    echo json_encode(array("statusCode" => 201,"err"=>mysqli_error($conn)));
 }
 
 mysqli_close($conn);

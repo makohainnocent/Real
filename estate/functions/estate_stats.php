@@ -79,7 +79,7 @@ require("../../db_config.php");
                 </div>
                 <div><i class="bx bxs-bar-chart-alt-2 nav_icon rounded-circle h2" style="padding:15px;background-color:#3ab36e12;color:#3ab36e" aria-hidden="true"></i></div>
             </div>
-            <small class="text-muted">As of '.date('F').' </small>
+            <small class="text-muted">Collected for the month '.date("F Y", strtotime("2022-05-28")).' </small>
         </div>
     </div>
 
