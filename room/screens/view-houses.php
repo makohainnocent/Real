@@ -2,23 +2,22 @@
 <html lang="en">
 
 <head>
-    <title>Rooms</title>
+    <title>Units</title>
     <?php require('../../ui/obj_header.php') ?>
     
     
 </head>
 
-<body id="body-pd"  style="background-color:#f6efe5 !important;">
+<body id="body-pd" style="background-color:#f8f9fa !important;">
 
-    <header class="header" id="header" style="background-color:#fff0;">
+    <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
     <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
-    <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
-        
+    <div class="height-100 bg-light mt-3">
+        <h4>Main Components</h4>
 
         <div class="table-wrapper mt-5 flex">
             <div class=""></div>
@@ -31,7 +30,7 @@
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: 0 1px 1px rgb(0 0 0 / 5%);">
 
 
-            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#add_house"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_house"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
             
 
 
@@ -325,7 +324,6 @@
                             type: "POST",
 
                             data: {
-                                
                                 unit_name: unit_name,
                                 rent: rent,
                                 estate_id:this_estate_id
