@@ -8,14 +8,14 @@ else {
 }
 
 require("../../db_config.php");
-$get_num_of_owners="SELECT COUNT(id) as num_owners FROM owners WHERE user_id=".$user_id;
-$query=mysqli_query($get_num_of_owner);
-if (!$query) {
-    die(mysqli_error($conn));
+$get_num_of_owners="SELECT COUNT(id) as num_owners FROM owners WHERE user_id=1";
+$query=mysqli_query($conn,$get_num_of_owners);
+if ($conn) {
+    
     $row=mysqli_fetch_assoc($query);
 }
 else {
-    echo mysqli_error($query);
+    die('Erro');
 }
 
 ?>
@@ -48,11 +48,11 @@ else {
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-column align-self-center">
                 <span class="h2"><?php echo $row['num_owners']; ?></span>
-                <span class="h5">Housing Units</span>
+                <span class="h5">Property Owners</span>
             </div>
             <div><i class='bx bx-grid-alt nav_icon font-size-lg rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
         </div>
-        This is some text within a card body.
+        <small class="text-muted text-small">Property owners are directly associated to estates</small>
     </div>
 </div>
 
