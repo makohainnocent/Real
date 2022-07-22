@@ -1,5 +1,16 @@
 <?php
 session_start();
+
+require("../../db_config.php");
+$get_num_of_tenants="SELECT COUNT(id) as num_tenants FROM tenants WHERE user_id=1";
+$query=mysqli_query($conn,$get_num_of_tenants);
+if ($conn) {
+    
+    $row=mysqli_fetch_assoc($query);
+}
+else {
+    die('Erro');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +34,29 @@ session_start();
     <!--Container Main start-->
     <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important;">
 
-    <div class="d-flex pt-5 mt-5 justify-content-around"></div>
+    <div class="d-flex pt-5 mt-5 justify-content-around">
+       
+        
+
+<div class="card card-box">
+    <div class="card-body">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-column align-self-center">
+                <span class="h2"><?php echo $row['num_tenants']; ?></span>
+                <span class="h5">Tenants</span>
+            </div>
+            <div><i class='bx bx-user-circle nav_icon font-size-lg rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
+        </div>
+        <small class="text-muted text-small">View all information from your tenants here.</small>
+    </div>
+</div>
+
+
+
+
+</div>
+
+    <div class="d-flex justify-content-around"></div>
         
 
 

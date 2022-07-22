@@ -8,7 +8,7 @@ else {
 }
 
 require("../../db_config.php");
-$get_num_of_owners="SELECT COUNT(id) as num_owners FROM owners WHERE user_id=1";
+$get_num_of_owners="SELECT COUNT(id) as num_owners FROM owners WHERE user_id=$user_id";
 $query=mysqli_query($conn,$get_num_of_owners);
 if ($conn) {
     
@@ -51,7 +51,7 @@ else {
                 <span class="h2"><?php echo $row['num_owners']; ?></span>
                 <span class="h5">Property Owners</span>
             </div>
-            <div><i class='bx bx-grid-alt nav_icon font-size-lg rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
+            <div><i class='bx bx-user nav_icon font-size-lg rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
         </div>
         <small class="text-muted text-small">Property owners are directly associated to estates</small>
     </div>

@@ -6,6 +6,7 @@ if (empty($_SESSION['id'])) {
     }else {
         $user_id = $_SESSION['id'];
     }
+    
 
 require("../../db_config.php");
 
