@@ -1,3 +1,25 @@
+<?php
+session_start();
+if (empty($_SESSION['id'])) {
+    header('location:/real/index.php');
+}
+else {
+    $user_id = $_SESSION['id'];
+}
+
+require("../../db_config.php");
+$get_num_of_owners="SELECT COUNT(id) as num_owners FROM owners WHERE user_id=".$user_id;
+$query=mysqli_query($get_num_of_owner);
+if (!$query) {
+    die(mysqli_error($conn));
+    $row=mysqli_fetch_assoc($query);
+}
+else {
+    echo mysqli_error($query);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,12 +40,14 @@
 
 
     <div class="d-flex p-2 mt-5 justify-content-around">
+       
+        
 
 <div class="card card-box">
     <div class="card-body">
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-column align-self-center">
-                <span class="h2">200</span>
+                <span class="h2"><?php echo $row['num_owners']; ?></span>
                 <span class="h5">Housing Units</span>
             </div>
             <div><i class='bx bx-grid-alt nav_icon font-size-lg rounded-circle' style='padding:15px;background-color:#3ab36e12;color:#3ab36e' aria-hidden="true"></i></div>
