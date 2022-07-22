@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,27 +9,47 @@
     <?php require('../../ui/obj_header.php') ?>
 </head>
 
-<body id="body-pd" style="background-color:#f8f9fa !important;">
+<body id="body-pd" style="background-color:#f6efe5 !important;">
 
-    <header class="header" id="header">
+<header class="header" id="header" style="background-color:#fff0;">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+        
+
+        <span class="h5 " style="font-weight:800;color:#3ab36e;"><?php echo strtoupper($_SESSION['company_name']); ?></span> 
+        <div class="header_img"><img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
+
     <?php require('../../sidebar.php') ?>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
-        <h4>Main Components</h4>
+    <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important;">
+
+    <div class="d-flex pt-5 mt-5 justify-content-around"></div>
+        
 
 
         <div class="table-wrapper mt-5" style="background: #fff;padding: 20px;box-shadow: 0 1px 1px rgb(0 0 0 / 5%);">
 
+        <div class="header-container d-flex flex-row justify-content-end">
 
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+            <div>
+                
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#add_owner"><i class="fa fa-plus" aria-hidden="true"></i> New Tenant</button>
+            </div>
+    
+            <div class="flex-fill">
+                <h2 style="text-align:center" >
+                    Tenants
+                </h2>
+            </div>
+
+        </div>  
 
 
-            <table class="table  table-bordered table-hover mt-3 mx-auto ">
+
+
+            <table class="table table-hover mt-3 mx-auto ">
                 <thead class="border-0">
-                    <tr class="table-info">
+                    <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Contact</th>

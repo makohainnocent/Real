@@ -32,6 +32,7 @@ else {
 
     <header class="header" id="header" style="background-color:#fff0;">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <span class="h5 " style="font-weight:800;color:#3ab36e;"><?php echo strtoupper($_SESSION['company_name']); ?></span>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
     <?php require('../../sidebar.php') ?>
@@ -39,7 +40,7 @@ else {
     <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
 
 
-    <div class="d-flex p-2 mt-5 justify-content-around">
+    <div class="d-flex pt-5 mt-5 justify-content-around">
        
         
 
@@ -82,7 +83,7 @@ else {
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Units</th>
+                        
                         <th scope="col">Contact</th>
                         <th scope="col">NIN</th>
                         <th scope="col">Bank A/C</th>

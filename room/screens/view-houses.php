@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Units</title>
+    <title>Rooms</title>
     <?php require('../../ui/obj_header.php') ?>
     
     
@@ -12,6 +12,7 @@
 
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
     <?php require('../../sidebar.php') ?>
@@ -324,6 +325,7 @@
                             type: "POST",
 
                             data: {
+                                
                                 unit_name: unit_name,
                                 rent: rent,
                                 estate_id:this_estate_id

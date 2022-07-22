@@ -17,7 +17,7 @@ if (mysqli_num_rows($query) > 0) {
         $number += 1;
         echo '<tr><th scope="">' . $number . '</th>
         <td>' . $row['names'] . '</td>
-        <td>20</td>
+        
         <td>' . $row['contact'] . '</td>
         <td>' . $row['nin'] . '</td>
         <td>' . $row['bank'] . '</td>
