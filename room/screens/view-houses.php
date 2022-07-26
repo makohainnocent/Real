@@ -1,5 +1,13 @@
 <?php
 session_start();
+require("../../db_config.php");
+$get_estate_name="SELECT estate_name FROM estates WHERE id=".$_GET['id'];
+$get_estate_name_query=mysqli_query($conn,$get_estate_name);
+
+if ($get_estate_name_query) {
+    $name=mysqli_fetch_assoc($get_estate_name_query);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,11 +44,12 @@ session_start();
         <div class="header-container d-flex flex-row justify-content-end">
 
          <div>
-         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#add_house"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
+         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#add_house"><i class="fa fa-plus" aria-hidden="true"></i> New House</button>
          </div>
 
         <div class="flex-fill">
          <h2 style="text-align:center" >
+         <?php echo $name['estate_name']; ?>
            Estates
          </h2>
         </div>
