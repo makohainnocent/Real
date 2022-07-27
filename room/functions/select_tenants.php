@@ -1,7 +1,8 @@
 <?php
+session_start();
 require("../../db_config.php");
 
-$sql = "SELECT id,names FROM tenants";
+$sql = "SELECT id,names FROM tenants WHERE user_id=".$_SESSION['id'];
 $query = mysqli_query($conn, $sql);
 if (mysqli_num_rows($query) > 0) {
     echo '<option selected value="">SELECT</option>';

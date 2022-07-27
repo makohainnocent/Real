@@ -16,7 +16,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO receipts(house_id,amount,payment_method,date,description,estate_id) 
+$sql = "INSERT INTO receipts(house_id,amount,payment_method,date,description,estate_id,balance) 
 VALUES('$room_id','$receipt_amount','$receipt_method','$receipt_date','$description','$estate_id')";
 
 if (mysqli_query($conn, $sql)) {

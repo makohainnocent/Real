@@ -78,6 +78,7 @@ if ($get_estate_name_query) {
                 </tbody>
             </table>
         </div>
+        <div name="magin bottom" style="height:20px;"></div>
     </div>
 
 
@@ -177,8 +178,14 @@ if ($get_estate_name_query) {
         $(document).on('click', '#add_tenant_to_room', function() {
             var tenant_id=$('#tenant_id').val();
             var date=$('#date').val();
+            if (tenant_id=='' || date=='') {
+                alert('All fields are required!');
+                return false;
+            }
+
             
-            alert(room_id+' '+tenant_id);
+            
+            //alert(room_id+' '+tenant_id);
             
             
             $.ajax({
@@ -219,7 +226,7 @@ if ($get_estate_name_query) {
                 //remove tenant from house
                 room_name=$(this).attr('data-name');
                 room_id=$(this).attr('value');
-                if (confirm("Are you sure you want to make this "+room_name+" vacant? "+room_id)) {
+                if (confirm("Are you sure you want to make "+room_name+" vacant? ")) {
                     
                     $.ajax({
                     url: '../functions/remove_tenant.php',
