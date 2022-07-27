@@ -30,7 +30,7 @@ else {
 
 <body id="body-pd" style="background-color:#f6efe5 !important;">
 
-    <header class="header" id="header" style="background-color:#fff0;">
+    <header class="header" id="header" style="background-color: #f6efe5 !important;">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <span class="h5 " style="font-weight:800;color:#3ab36e;"><?php echo strtoupper($_SESSION['company_name']); ?></span>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>

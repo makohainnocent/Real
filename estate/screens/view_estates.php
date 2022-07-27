@@ -21,7 +21,7 @@ if (empty($_SESSION['id'])) {
 
 <body id="body-pd" style="background-color:#f6efe5 !important;">
 
-    <header class="header" id="header" style="background-color:#fff0;">
+    <header class="header" id="header" style="background-color: #f6efe5 !important;">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         
 
