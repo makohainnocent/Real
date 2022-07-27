@@ -50,7 +50,7 @@ if ($get_estate_name_query) {
         <div class="flex-fill">
          <h2 style="text-align:center" >
          <?php echo $name['estate_name']; ?>
-           Estates
+           Estate
          </h2>
         </div>
 
@@ -218,9 +218,9 @@ if ($get_estate_name_query) {
             else{
                 //remove tenant from house
                 room_name=$(this).attr('data-name');
-                if (confirm("Are you sure you want to make this house vacant? "+room_name)) {
+                room_id=$(this).attr('value');
+                if (confirm("Are you sure you want to make this "+room_name+" vacant? "+room_id)) {
                     
-                    room_id=$(this).attr('value');
                     $.ajax({
                     url: '../functions/remove_tenant.php',
                     type: 'post',

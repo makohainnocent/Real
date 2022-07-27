@@ -2,7 +2,7 @@
 
 require("../../db_config.php");
 
-$tenant_id = '';
+
 $room_id = clean($_POST['id']);
 //clean($_POST['estate_id']);
 //$rent = clean($_POST['rent']);
@@ -14,7 +14,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "UPDATE rooms SET tenant_id='$tenant_id',vacancy=0 WHERE id='$room_id'";
+$sql = "UPDATE rooms SET tenant_id=NULL,vacancy=0 WHERE id='$room_id'";
 
 if (mysqli_query($conn, $sql)) {
     echo json_encode(array("statusCode" => 200));
