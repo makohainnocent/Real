@@ -15,7 +15,7 @@ if (empty($_SESSION['id'])) {
 <html lang="en">
 
 <head>
-    <title>Owners</title>
+    <title>Estates</title>
     
 </head>
 
