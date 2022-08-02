@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if (empty($_SESSION['id'])) {
     header('location:/real/index.php');
     }
@@ -10,15 +9,8 @@ if (empty($_SESSION['id'])) {
     require('../../ui/obj_header.php');
     
     //get company name
-    require("../../db_config.php");
-    $get_filled="SELECT COUNT(id) as num FROM rooms WHERE vacancy=1 and user_id=".$_SESSION['id'];
-    $get_filled_query=mysqli_query($conn,$get_filled);
     
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +35,19 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     <!--Container Main start-->
     <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
 
-    <?php require('../functions/stats.php'); ?>
+    <?php 
+    require('../functions/stats.php');
+
+
+    $get_filled="SELECT (SELECT COUNT(id) FROM rooms WHERE user_id=1) as total_rooms,COUNT(id) as num_filled FROM rooms WHERE vacancy=1 and user_id=".$_SESSION['id'];
+    $get_filled_query=mysqli_query($conn,$get_filled);
+
+    if ($get_filled_query) {
+      $row=mysqli_fetch_assoc($get_filled_query);
+    }
+
+
+     ?>
 
 
     <div class="d-flex flex-row pt-3 justify-content-between">
@@ -55,7 +59,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
   <div class="card-body">
     <div class="d-flex flex-row justify-content-between">
       <div>
-        <h5 class="card-title"><span class="badge rounded-pill bg-success"> 1 of 10</span></h5>
+        <h5 class="card-title"><span class="badge rounded-pill bg-success"> <?php echo $row['num_filled'].' of '.$row['total_rooms']; ?></span></h5>
         <small class="text-muted">Occupied</small>
       </div>
 
@@ -69,7 +73,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     
     <p class="card-text">
     
-    <canvas id="myChart" style="width:100%;max-width:600px;margin:30px auto"></canvas>
+    <canvas id="myChart" style="width:100%;max-width:600px;margin-20px auto;"></canvas>
 
     </p>
   </div>
