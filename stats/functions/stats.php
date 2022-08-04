@@ -17,9 +17,9 @@ if ($query) {
     $row=mysqli_fetch_assoc($query);
 
 
- echo '<div class="d-flex pt-5 mt-5 justify-content-around">
+ echo '<div class="d-flex flex-wrap pt-5 mt-5 justify-content-around">
 
-        <div class="card card-box">
+        <div class="flex-fill card card-box">
             <div class="card-body">
                 <div class="d-flex flex-row justify-content-between">
                     <div class="d-flex flex-column align-self-center">
@@ -35,7 +35,7 @@ if ($query) {
         </div>
 
 
-        <div class="card card-box">
+        <div class="flex-fill flex-shrink-O card card-box">
             <div class="card-body">
                 <div class="d-flex flex-row justify-content-between">
                     <div class="d-flex flex-column align-self-center">
@@ -51,7 +51,7 @@ if ($query) {
 
         
 
-        <div class="card card-box">
+        <div class="flex-fill card card-box">
         <div class="card-body">
             <div class="d-flex flex-row justify-content-between">
                 <div class="d-flex flex-column align-self-center">

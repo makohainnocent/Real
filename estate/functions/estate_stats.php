@@ -10,10 +10,10 @@ if (empty($_SESSION['id'])) {
 require("../../db_config.php");
 
 
-    $get_numbers_query="SELECT COUNT(id) as num_estates  FROM estates WHERE user_id=1";
-    $get_users_query="SELECT COUNT(id) as num_owners FROM owners WHERE user_id=1";
-    $get_room_numbers="SELECT COUNT(id) as num_rooms FROM rooms WHERE estate_id IN (SELECT id FROM estates WHERE user_id=1)";
-    $get_income_for_cur_month="SELECT SUM(amount) as total_revenue FROM receipts WHERE user_id=1";
+    $get_numbers_query="SELECT COUNT(id) as num_estates  FROM estates WHERE user_id='$user_id'";
+    $get_users_query="SELECT COUNT(id) as num_owners FROM owners WHERE user_id='$user_id'";
+    $get_room_numbers="SELECT COUNT(id) as num_rooms FROM rooms WHERE estate_id IN (SELECT id FROM estates WHERE user_id='$user_id')";
+    $get_income_for_cur_month="SELECT SUM(amount) as total_revenue FROM receipts WHERE user_id='$user_id'";
     $query=mysqli_query($conn,$get_numbers_query) or die("Error");
     $query1=mysqli_query($conn,$get_room_numbers) or die("Error1");
     $query2=mysqli_query($conn,$get_users_query) or die("Error2");
