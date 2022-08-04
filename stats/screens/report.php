@@ -89,37 +89,61 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
   <div class="card-body">
     
     <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+   <div class="d-flex flex-row justify-content-between border-bottom"><p class="h6">Total(UGX)</p><p><?php echo number_format(2000) ?></p></div> 
+    <div class="month border-bottom py-4" >
+      <div class="d-flex flex-row justify-content-between ">
+        <div>Estate Name <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy Thedon</small></p></div>
+        <h6 class="text-muted"></h6>
+      </div>
+
+      <div class="d-flex flex-row justify-content-between mb-2">
+        <h4><?php echo number_format(2000) ?></h4><div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>  AUGUST(30%)</small> </div><h4><?php echo number_format(3000) ?></h4>
+       
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
+    </div>
+
+    <div class="month border-bottom py-4" >
+      <div class="d-flex flex-row justify-content-between ">
+        <div>Estate Name <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy Thedon</small></p></div>
+        <h6 class="text-muted"></h6>
+      </div>
+
+      <div class="d-flex flex-row justify-content-between mb-2">
+        <h4><?php echo number_format(2000) ?></h4><div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>  AUGUST(30%)</small> </div><h4><?php echo number_format(3000) ?></h4>
+       
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
+    </div>
+
+    <div class="month border-bottom py-4" >
+      <div class="d-flex flex-row justify-content-between ">
+        <div>Estate Name <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy Thedon</small></p></div>
+        <h6 class="text-muted"></h6>
+      </div>
+
+      <div class="d-flex flex-row justify-content-between mb-2">
+        <h4 class="text-wrap"><?php echo number_format(2000000000) ?></h4><div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>  AUGUST(30%)</small> </div><h4><?php echo number_format(3000) ?></h4>
+       
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
+    </div>
+
     
-    <div class="month border-bottom my-5" >
-      <div class="d-flex flex-row justify-content-between">
-        <h6 class="text-muted">Outstanding</h6><h6 class="text-muted">Total Due</h6>
-      </div>
 
-      <div class="d-flex flex-row justify-content-between mb-2">
-        <h4>2000</h4><h4>3000</h4>
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <h4 class="mt-3">3000</h4>
+    
 
-    </div>
+    
 
-
-    <div class="month border-bottom my-5" >
-      <div class="d-flex flex-row justify-content-between">
-        <h6 class="text-muted">Outstanding</h6><h6 class="text-muted">Total Due</h6>
-      </div>
-
-      <div class="d-flex flex-row justify-content-between mb-2">
-        <h4>2000</h4><h4>3000</h4>
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <h4 class="mt-3">3000</h4>
-
-    </div>
 
 
 
