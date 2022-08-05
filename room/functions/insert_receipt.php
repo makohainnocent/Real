@@ -16,13 +16,13 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO receipts(house_id,amount,payment_method,date,description,estate_id,balance) 
+$sql = "INSERT INTO receipts(house_id,amount,payment_method,date,description,estate_id) 
 VALUES('$room_id','$receipt_amount','$receipt_method','$receipt_date','$description','$estate_id')";
 
 if (mysqli_query($conn, $sql)) {
     echo json_encode(array("statusCode" => 200));
 } else {
-    echo json_encode(array("statusCode" => 201));
+    echo json_encode(array("statusCode" => 201,"error"=>mysqli_error($conn)));
 }
 
 mysqli_close($conn);

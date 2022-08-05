@@ -165,9 +165,16 @@ if ($get_estate_name_query) {
                         method:payment,
                         description:description
                     },
-                    success: function() {
-                        alert('Receipt was successfully inserted')
-                        displayUnits();
+                    success: function(res) {
+                        var res1 = JSON.parse(res);
+                        if(res1.statusCode==201){
+                            alert(res1.error+" Hello");
+                        }
+                        else{
+
+                            alert('Receipt was successfully inserted')
+                            displayUnits();
+                        }
                     }
                 });
             

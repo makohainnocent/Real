@@ -73,7 +73,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     
     <p class="card-text">
     
-    <center><canvas id="myChart" style="width:100%;max-width:600px;margin-20px auto;"></canvas></center>
+    <center><canvas id="myChart" style="width:100%;max-width:600px;margin:20px auto;"></canvas></center>
 
     </p>
   </div>
@@ -89,10 +89,29 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
   <div class="card-body">
     
     <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+    <?php
+
+    $get_money="SELECT COUNT(receipts.id),estates.estate_name,owners.names FROM estates LEFT JOIN owners ON estates.owner_id=owners.id LEFT JOIN receipts ON receipts.estate_id=estates.id";
+    $get_money_query=mysqli_query($conn,$get_money) or die(mysqli_error($conn));
+
+    if(mysqli_num_rows($get_money_query)>0) {
+       while ($money_row=mysqli_fetch_assoc($get_money_query)) {
+         echo $money_row['estate_name']." - ".$money_row['names']."<br/>";
+       }
+      
+    }
+    ?>
+
+
    <div class="d-flex flex-row justify-content-between border-bottom"><p class="h6">Total(UGX)</p><p><?php echo number_format(2000) ?></p></div> 
-    <div class="month border-bottom py-4" >
+
+    
+   
+   
+   <div class="month border-bottom py-4" >
       <div class="d-flex flex-row justify-content-between ">
-        <div>Estate Name <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy Thedon</small></p></div>
+        <div> <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy Thedon</small></p></div>
         <h6 class="text-muted"></h6>
       </div>
 
