@@ -92,7 +92,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 
     <?php
 
-    $get_money="SELECT COUNT(receipts.id),estates.estate_name,owners.names FROM estates LEFT JOIN owners ON estates.owner_id=owners.id LEFT JOIN receipts ON receipts.estate_id=estates.id";
+    $get_money="SELECT DISTINCT(estates.estate_name),owners.names FROM estates LEFT JOIN owners ON estates.owner_id=owners.id LEFT JOIN receipts ON receipts.estate_id=estates.id";
     $get_money_query=mysqli_query($conn,$get_money) or die(mysqli_error($conn));
 
     if(mysqli_num_rows($get_money_query)>0) {

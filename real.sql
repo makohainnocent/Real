@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 20, 2022 at 02:21 PM
+-- Generation Time: Aug 05, 2022 at 04:54 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -42,12 +42,12 @@ CREATE TABLE `estates` (
 --
 
 INSERT INTO `estates` (`id`, `user_id`, `estate_name`, `owner_id`, `location`, `details`, `added`) VALUES
-(5, 1, 'Kyanja Estate', 5, 'kyanja', 'fgdfgdgd', '2022-07-16 16:12:30'),
-(6, 1, 'Semawata Estate', 7, 'ntinda', 'tytrytryrt', '2022-07-16 16:12:30'),
-(7, 1, 'kyanjanja-estate', 9, 'kisasi', 'sample', '2022-07-16 16:12:30'),
+(5, 1, 'Kyanja Estate', 2, 'kyanja', 'fgdfgdgd', '2022-08-05 09:59:09'),
+(6, 1, 'Semawata Estate', 5, 'ntinda', 'tytrytryrt', '2022-08-05 11:46:47'),
+(7, 1, 'kasese Estate', 8, 'kisasi', 'sample', '2022-08-05 14:02:17'),
 (8, 1, 'kira estate', 7, 'kira', 'jkhjhjhvjhvh', '2022-07-16 16:12:30'),
 (9, 1, 'Maganjo Estates', 7, 'maganjo', 'They look nice painted in white', '2022-07-16 16:12:30'),
-(13, 1, 'kyambogo', 2, 'bcvbcv', 'vcbxcvbcvb', '2022-07-19 08:48:34');
+(13, 1, 'kyambogo Estate', 2, 'bcvbcv', 'vcbxcvbcvb', '2022-08-05 14:02:04');
 
 -- --------------------------------------------------------
 
@@ -59,9 +59,9 @@ CREATE TABLE `owners` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `names` varchar(25) DEFAULT NULL,
-  `contact` int(11) DEFAULT NULL,
+  `contact` varchar(100) DEFAULT NULL,
   `nin` varchar(25) DEFAULT NULL,
-  `bank` int(11) DEFAULT NULL,
+  `bank` varchar(100) DEFAULT NULL,
   `added` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -70,11 +70,13 @@ CREATE TABLE `owners` (
 --
 
 INSERT INTO `owners` (`id`, `user_id`, `names`, `contact`, `nin`, `bank`, `added`) VALUES
-(2, 1, 'jerry', 7056, '232f', 454645645, '2022-07-19 10:36:13'),
-(5, 1, 'Amon', 39435348, 'nbtn4b56n4565', 2147483647, '2022-07-19 10:36:13'),
-(7, 1, 'percy', 705, '232', 214748364, '2022-07-19 10:36:13'),
-(8, 1, 'michael', 7056, '232f', 6657876, '2022-07-19 10:36:13'),
-(9, 1, 'danny', 7056, '4543', 34234234, '2022-07-19 10:36:13');
+(2, 1, 'jerry', '7056', '232f', '454645645', '2022-07-19 10:36:13'),
+(5, 1, 'Amon', '39435348', 'nbtn4b56n4565', '2147483647', '2022-07-19 10:36:13'),
+(7, 1, 'percy', '705', '232', '214748364', '2022-07-19 10:36:13'),
+(8, 1, 'michael', '1111111', '232f', '6657876', '2022-07-21 14:33:27'),
+(13, 1, 'percy thedon', '0765765', 'cmrrtrt0009', '34343343', '2022-07-21 14:23:36'),
+(14, 2, 'MASTER DON', 'dfg', 'dfg', 'dfgdfgd', '2022-07-21 14:29:28'),
+(15, 1, 'MASTER DON', 'percymichael0@gmail', '234234', '23432', '2022-07-26 07:48:54');
 
 -- --------------------------------------------------------
 
@@ -86,6 +88,7 @@ CREATE TABLE `receipts` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `amount` int(11) NOT NULL,
+  `balance` bigint(20) DEFAULT NULL,
   `house_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `estate_id` int(11) NOT NULL,
@@ -97,22 +100,12 @@ CREATE TABLE `receipts` (
 -- Dumping data for table `receipts`
 --
 
-INSERT INTO `receipts` (`id`, `user_id`, `amount`, `house_id`, `date`, `estate_id`, `payment_method`, `description`) VALUES
-(1, 1, 20000, 1, '2022-05-28', 0, 'Cash', 'dsjfsdkfls'),
-(2, 1, 200000, 1, '2022-05-24', 0, 'Cash', 'sdfsfdfsddf'),
-(3, 1, 430000, 1, '2022-05-22', 10, 'Bank', 'hes mad'),
-(4, 1, 320000, 2, '2022-05-30', 10, 'Mobile Money', 'just'),
-(5, 1, 2000, 1, '2022-05-29', 10, 'Bank', 'hes mad'),
-(6, 1, 2000, 1, '2022-05-29', 10, 'Bank', 'hes mad'),
-(7, NULL, 6000, 1, '2022-05-31', 10, 'Cash', 'just'),
-(8, 1, 60000000, 9, '2022-06-05', 10, 'Cash', 'sample'),
-(9, NULL, 400000, 1, '2022-06-23', 10, 'Cash', 'just'),
-(10, 1, 400000, 1, '0000-00-00', 10, 'Cash', 'just'),
-(11, 1, 400000, 1, '2022-06-09', 10, 'Cash', 'samplekkk'),
-(12, NULL, 0, 3, '2022-06-08', 10, 'Cash', ''),
-(13, NULL, 250000, 1, '2022-06-12', 10, 'Cash', 'Paid half for the month of june'),
-(14, NULL, 150000, 1, '2022-07-10', 10, 'Mobile Money', 'pingu'),
-(15, 1, 990000, 8, '2022-07-10', 10, 'Cash', ',kkkll');
+INSERT INTO `receipts` (`id`, `user_id`, `amount`, `balance`, `house_id`, `date`, `estate_id`, `payment_method`, `description`) VALUES
+(31, NULL, 12000, NULL, 27, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa'),
+(32, NULL, 12000, NULL, 28, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa'),
+(33, NULL, 12000, NULL, 29, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa'),
+(34, NULL, 12000, NULL, 30, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa'),
+(35, NULL, 12000, NULL, 31, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa');
 
 -- --------------------------------------------------------
 
@@ -122,10 +115,11 @@ INSERT INTO `receipts` (`id`, `user_id`, `amount`, `house_id`, `date`, `estate_i
 
 CREATE TABLE `rooms` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `unit_name` varchar(25) DEFAULT NULL,
   `estate_id` int(11) DEFAULT NULL,
   `monthly_rent` int(11) DEFAULT NULL,
-  `tenant_id` int(11) DEFAULT NULL,
+  `tenant_id` bigint(100) DEFAULT NULL,
   `entrance_date` date DEFAULT NULL,
   `last_receipt_date` date DEFAULT NULL,
   `last_notified_date` date DEFAULT NULL,
@@ -137,21 +131,14 @@ CREATE TABLE `rooms` (
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `unit_name`, `estate_id`, `monthly_rent`, `tenant_id`, `entrance_date`, `last_receipt_date`, `last_notified_date`, `vacancy`, `balance`) VALUES
-(2, 'Home', 6, 320000, 7, '2022-07-10', '2022-05-30', '2022-07-19', 1, -2560000),
-(3, 'jkhjhjk', 7, 78676868, 8, NULL, '2022-06-08', '2022-07-18', 1, -472061208),
-(4, 'hahaha', 7, 12334, 3, NULL, NULL, NULL, 1, 0),
-(5, 'qeqweqweqe', 8, 800000, 5, NULL, NULL, NULL, 1, 0),
-(6, 'ddd', 8, 2147483647, 3, '2022-05-24', NULL, NULL, 1, 0),
-(7, 'pingu', 9, 1111242, 5, NULL, NULL, NULL, 0, 0),
-(8, 'dradooo', 6, 330000, 7, '2022-06-09', '2022-07-10', NULL, 1, 990000),
-(9, 'serfsdfs', 5, 2147483647, 9, '2022-06-09', '2022-06-05', '2022-07-10', 1, -2147483648),
-(10, 'Room1 test', 5, 500000, 8, '2022-06-11', NULL, NULL, 1, 0),
-(11, 'kawempe', 5, 2000, NULL, NULL, NULL, NULL, 0, NULL),
-(12, 'were', 5, 55555, 7, '2022-07-16', NULL, NULL, 1, NULL),
-(13, 'dfvcx', 5, 20000, NULL, NULL, NULL, NULL, 0, NULL),
-(14, 'cvbcvb', 5, 545454, NULL, NULL, NULL, NULL, 0, NULL),
-(15, 'fdfs', 6, 33333, 3, '2022-07-20', NULL, NULL, 1, NULL);
+INSERT INTO `rooms` (`id`, `user_id`, `unit_name`, `estate_id`, `monthly_rent`, `tenant_id`, `entrance_date`, `last_receipt_date`, `last_notified_date`, `vacancy`, `balance`) VALUES
+(27, NULL, 'room4', 5, 430000, 16, '2022-08-06', '2022-08-05', NULL, 1, NULL),
+(28, NULL, 'room1', 5, 30000, 13, '2022-08-05', '2022-08-05', NULL, 1, NULL),
+(29, 1, 'room2', 5, 340000, 14, '2022-08-05', '2022-08-05', NULL, 1, NULL),
+(30, 1, 'room5', 5, 450000, 15, '2022-08-05', '2022-08-05', NULL, 1, NULL),
+(31, 1, 'room3', 5, 123000, 17, '2022-08-05', '2022-08-05', NULL, 1, NULL),
+(32, 1, 'fdsf', 6, 100000, NULL, NULL, NULL, NULL, 0, NULL),
+(33, 1, 'kama1', 9, 200000, NULL, NULL, NULL, NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -161,6 +148,7 @@ INSERT INTO `rooms` (`id`, `unit_name`, `estate_id`, `monthly_rent`, `tenant_id`
 
 CREATE TABLE `tenants` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `names` varchar(25) NOT NULL,
   `contact` varchar(25) NOT NULL,
   `nin` varchar(25) NOT NULL
@@ -170,13 +158,19 @@ CREATE TABLE `tenants` (
 -- Dumping data for table `tenants`
 --
 
-INSERT INTO `tenants` (`id`, `names`, `contact`, `nin`) VALUES
-(3, 'John', '07056', '232f'),
-(4, 'Jane', '07056', '232f'),
-(5, 'Danny', '07056', '1111'),
-(7, 'amon', '07056', '4564564564'),
-(8, 'Inno', '07056', '232f'),
-(9, 'percy michael', '07056', '465676876978');
+INSERT INTO `tenants` (`id`, `user_id`, `names`, `contact`, `nin`) VALUES
+(4, 1, 'Jane', '07056', '232f'),
+(5, NULL, 'Danny', '07056', '1111'),
+(7, NULL, 'amon', '07056', '4564564564'),
+(8, NULL, 'Inno', '07056', '232f'),
+(9, NULL, 'percy michael', '07056', '465676876978'),
+(10, NULL, 'fdgd', 'fdgdgdg', 'gdfgd'),
+(11, NULL, 'MASTER DON', 'dfgds', 'dfgdf'),
+(13, 1, 'percy thedon', '2222', '34543'),
+(14, 1, 'JOHN', '1111', '2233'),
+(15, 1, 'TED', '12222', '1222'),
+(16, 1, 'QWERT', '223', '33444'),
+(17, 1, 'YOUN5', '345646', '67567');
 
 -- --------------------------------------------------------
 
@@ -221,7 +215,8 @@ ALTER TABLE `owners`
 -- Indexes for table `receipts`
 --
 ALTER TABLE `receipts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `delete` (`house_id`);
 
 --
 -- Indexes for table `rooms`
@@ -255,31 +250,41 @@ ALTER TABLE `estates`
 -- AUTO_INCREMENT for table `owners`
 --
 ALTER TABLE `owners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tenants`
 --
 ALTER TABLE `tenants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `receipts`
+--
+ALTER TABLE `receipts`
+  ADD CONSTRAINT `delete` FOREIGN KEY (`house_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

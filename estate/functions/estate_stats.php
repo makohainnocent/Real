@@ -25,7 +25,7 @@ require("../../db_config.php");
         $row2=mysqli_fetch_assoc($query2);
         $row4=mysqli_fetch_assoc($query3);
 
-        echo ' <div class="d-flex pt-5 mt-5 justify-content-around">
+        echo ' <div class="d-flex flex-wrap pt-5 mt-5 justify-content-around">
 
         <div class="card card-box">
             <div class="card-body">

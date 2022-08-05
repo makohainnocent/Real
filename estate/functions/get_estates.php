@@ -25,8 +25,8 @@ if (mysqli_num_rows($query) > 0) {
         $row2_e=mysqli_fetch_assoc($house_count_query_e);
 
         $number += 1;
-        echo '<tr style="cursor:pointer;" class="this_estate" data-real-estate-id="'.$row['id'].'"><th scope="">' . $number . '</th>
-        <td>' . ucwords($row['estate_name']) . ' <span class="badge bg-secondary rounded-pill bg-success">
+        echo '<tr ><th scope="">' . $number . '</th>
+        <td class="this_estate" data-real-estate-id="'.$row['id'].'" style="cursor:pointer;">' . ucwords($row['estate_name']) . ' <span class="badge bg-secondary rounded-pill bg-success">
                                     <i class="fas fa-home    "></i> '.$row2['house_no'].'</span>
                                     <br/><small class="text-muted"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> ' . ucwords($row['location']) . '  &nbsp;<i class="fas fa-user  text-warning  "></i> ' . ucwords($row['owner_names']) . '</small></td>
                                     <td>

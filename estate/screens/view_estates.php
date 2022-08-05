@@ -51,7 +51,7 @@ if (empty($_SESSION['id'])) {
         </div>          
             
 
-            <div class="no-data mt-3" style=";text-align:center;width:100%;"></div>
+            <div class="no-data mt-3" style="text-align:center;width:100%;"></div>
 
 
             <table class="table table-hover mt-3 mx-auto ">
