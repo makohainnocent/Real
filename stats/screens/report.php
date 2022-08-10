@@ -14,28 +14,28 @@ if (empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
-    <title>Stats</title>
-    
-</head>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+        </script>
+        <title>Stats</title>
 
-<body id="body-pd" style="background-color:#f6efe5 !important;">
+    </head>
 
-    <header class="header" id="header" style="background-color: #f6efe5 !important;">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        
+    <body id="body-pd" style="background-color:#f6efe5 !important;">
 
-        <span class="h5 " style="font-weight:800;color:#3ab36e;"><?php echo strtoupper($_SESSION['company_name']); ?></span> 
-        <div class="header_img"><img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
-    </header>
-    <?php require('../../sidebar.php') ?>
-    <!--Container Main start-->
-    <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
+        <header class="header" id="header" style="background-color: #f6efe5 !important;">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
 
-    <?php 
+
+            <span class="h5 "
+                style="font-weight:800;color:#3ab36e;"><?php echo strtoupper($_SESSION['company_name']); ?></span>
+            <div class="header_img"><img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+        </header>
+        <?php require('../../sidebar.php') ?>
+        <!--Container Main start-->
+        <div class="height-100 bg-light mt-3" style="background-color:#f6efe5 !important">
+
+            <?php 
     require('../functions/stats.php');
 
 
@@ -50,132 +50,169 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
      ?>
 
 
-    <div class="d-flex flex-wrap flex-row pt-3 justify-content-between">
-        
-        
-       
-        <div class="flex-fill m-2 card mb-3 border-0" style="box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-  <div class="card-header">Occupancy</div>
-  <div class="card-body">
-    <div class="d-flex flex-row justify-content-between">
-      <div>
-        <h5 class="card-title"><span class="badge rounded-pill bg-success"> <?php echo $row['num_filled'].' of '.$row['total_rooms']; ?></span></h5>
-        <small class="text-muted">Occupied</small>
-      </div>
+            <div class="d-flex flex-wrap flex-row pt-3 justify-content-between">
 
-      <div>
 
-        <h5 class="card-title"><span class="badge rounded-pill bg-danger"><?php echo $row['vacant_rooms'].' of '.$row['total_rooms']; ?></span></h5>
-        <small class="text-muted">Empty</small>
-      </div>
-      
-    </div>
+
+                <div class="flex-fill m-2 card mb-3 border-0"
+                    style="box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                    <div class="card-header">Occupancy</div>
+                    <div class="card-body">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div>
+                                <h5 class="card-title"><span class="badge rounded-pill bg-success">
+                                        <?php echo $row['num_filled'].' of '.$row['total_rooms']; ?></span></h5>
+                                <small class="text-muted">Occupied</small>
+                            </div>
+
+                            <div>
+
+                                <h5 class="card-title"><span
+                                        class="badge rounded-pill bg-danger"><?php echo $row['vacant_rooms'].' of '.$row['total_rooms']; ?></span>
+                                </h5>
+                                <small class="text-muted">Empty</small>
+                            </div>
+
+                        </div>
+
+                        <p class="card-text">
+
+                            <center><canvas id="myChart" style="width:100%;max-width:600px;margin:20px auto;"></canvas>
+                            </center>
+
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="flex-fill m-2 card mb-3 border-0"
+                    style="box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                    <div class="card-header">Rent Collected</div>
+                    <div class="card-body">
+
+                        <p class="card-text text-muted">Some quick example text to build on the card title and make up
+                            the bulk of the card's content.</p>
+
+                        <?php
+
+    $get_money="SELECT estate_name,CASE WHEN receipts.amount IS NULL THEN 0 ELSE receipts.amount END as collected_rent 
+    FROM estates LEFT JOIN receipts on estates.id=receipts.estate_id";
     
-    <p class="card-text">
-    
-    <center><canvas id="myChart" style="width:100%;max-width:600px;margin:20px auto;"></canvas></center>
-
-    </p>
-  </div>
-</div>
-        
-     
-
-        
-
-       
-        <div class="flex-fill m-2 card mb-3 border-0" style="box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-  <div class="card-header">Rent Collected</div>
-  <div class="card-body">
-    
-    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-    <?php
-
-    $get_money="SELECT DISTINCT(estates.estate_name),owners.names FROM estates LEFT JOIN owners ON estates.owner_id=owners.id LEFT JOIN receipts ON receipts.estate_id=estates.id";
     $get_money_query=mysqli_query($conn,$get_money) or die(mysqli_error($conn));
-
+    
     if(mysqli_num_rows($get_money_query)>0) {
+
+      
+
        while ($money_row=mysqli_fetch_assoc($get_money_query)) {
-         echo $money_row['estate_name']." - ".$money_row['names']."<br/>";
+         echo $money_row['estate_name']." - ".$money_row['collected_rent']."<br/>";
        }
       
     }
     ?>
 
 
-   <div class="d-flex flex-row justify-content-between border-bottom"><p class="h6">Total(UGX)</p><p><?php echo number_format(2000) ?></p></div> 
-
-    
-   
-   
-   <div class="month border-bottom py-4" >
-      <div class="d-flex flex-row justify-content-between ">
-        <div> <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy Thedon</small></p></div>
-        <h6 class="text-muted"></h6>
-      </div>
-
-      <div class="d-flex flex-row justify-content-between mb-2">
-        <h4><?php echo number_format(2000) ?></h4><div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>  AUGUST(30%)</small> </div><h4><?php echo number_format(3000) ?></h4>
-       
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-
-    </div>
-
-    <div class="month border-bottom py-4" >
-      <div class="d-flex flex-row justify-content-between ">
-        <div>Estate Name <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy Thedon</small></p></div>
-        <h6 class="text-muted"></h6>
-      </div>
-
-      <div class="d-flex flex-row justify-content-between mb-2">
-        <h4><?php echo number_format(2000) ?></h4><div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>  AUGUST(30%)</small> </div><h4><?php echo number_format(3000) ?></h4>
-       
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-
-    </div>
-
-    <div class="month border-bottom py-4" >
-      <div class="d-flex flex-row justify-content-between ">
-        <div>Estate Name <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy Thedon</small></p></div>
-        <h6 class="text-muted"></h6>
-      </div>
-
-      <div class="d-flex flex-row justify-content-between mb-2">
-        <h4 class="text-wrap"><?php echo number_format(2000000000) ?></h4><div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>  AUGUST(30%)</small> </div><h4><?php echo number_format(3000) ?></h4>
-       
-      </div>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-
-    </div>
-
-    
-
-    
-
-    
+                        <div class="d-flex flex-row justify-content-between border-bottom">
+                            <p class="h6">Total(UGX)</p>
+                            <p><?php echo number_format(2000) ?></p>
+                        </div>
 
 
 
 
-  </div>
-</div>
-        
+                        <div class="month border-bottom py-4">
+                            <div class="d-flex flex-row justify-content-between ">
+                                <div>
+                                    <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy
+                                            Thedon</small></p>
+                                </div>
+                                <h6 class="text-muted"></h6>
+                            </div>
+
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <h4><?php echo number_format(2000) ?></h4>
+                                <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
+                                        AUGUST(30%)</small> </div>
+                                <h4><?php echo number_format(3000) ?></h4>
+
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+                                    role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="month border-bottom py-4">
+                            <div class="d-flex flex-row justify-content-between ">
+                                <div>Estate Name <p><small class="text-muted"><i
+                                                class="fas fa-user  text-warning  "></i> Percy Thedon</small></p>
+                                </div>
+                                <h6 class="text-muted"></h6>
+                            </div>
+
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <h4><?php echo number_format(2000) ?></h4>
+                                <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
+                                        AUGUST(30%)</small> </div>
+                                <h4><?php echo number_format(3000) ?></h4>
+
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+                                    role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="month border-bottom py-4">
+                            <div class="d-flex flex-row justify-content-between ">
+                                <div>Estate Name <p><small class="text-muted"><i
+                                                class="fas fa-user  text-warning  "></i> Percy Thedon</small></p>
+                                </div>
+                                <h6 class="text-muted"></h6>
+                            </div>
+
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <h4 class="text-wrap"><?php echo number_format(2000000000) ?></h4>
+                                <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
+                                        AUGUST(30%)</small> </div>
+                                <h4><?php echo number_format(3000) ?></h4>
+
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+                                    role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
+                            </div>
+
+                        </div>
 
 
-    </div>
-        <div name="magin bottom" style="height:20px;"></div>
 
-        <script>
-          <?php 
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div name="magin bottom" style="height:20px;"></div>
+
+            <script>
+            <?php 
 
           $percentage_filled=number_format((($row['num_filled']/$row['total_rooms'])*100),2);
           echo 'var data = {
@@ -221,23 +258,23 @@ Chart.pluginService.register({
 });';
     ?>
 
-var chart = new Chart(document.getElementById('myChart'), {
-  type: 'doughnut',
-  data: data,
-  options: {
-  	responsive: true,
-    legend: {
-      display: false
-    }
-  }
-});
-        </script>
-
-    
+            var chart = new Chart(document.getElementById('myChart'), {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: false
+                    }
+                }
+            });
+            </script>
 
 
 
 
-</body>
+
+
+    </body>
 
 </html>
