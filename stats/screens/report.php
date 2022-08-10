@@ -97,23 +97,6 @@ if (empty($_SESSION['id'])) {
                         <p class="card-text text-muted">Some quick example text to build on the card title and make up
                             the bulk of the card's content.</p>
 
-                        <?php
-
-    $get_money="SELECT estate_name,CASE WHEN receipts.amount IS NULL THEN 0 ELSE receipts.amount END as collected_rent 
-    FROM estates LEFT JOIN receipts on estates.id=receipts.estate_id";
-    
-    $get_money_query=mysqli_query($conn,$get_money) or die(mysqli_error($conn));
-    
-    if(mysqli_num_rows($get_money_query)>0) {
-
-      
-
-       while ($money_row=mysqli_fetch_assoc($get_money_query)) {
-         echo $money_row['estate_name']." - ".$money_row['collected_rent']."<br/>";
-       }
-      
-    }
-    ?>
 
 
                         <div class="d-flex flex-row justify-content-between border-bottom">
@@ -123,6 +106,23 @@ if (empty($_SESSION['id'])) {
 
 
 
+
+                        <?php
+
+                             $get_money="SELECT (SELECT SUM(monthly_rent) FROM rooms WHERE user_id=".$_SESSION['id'].") AS expected_rent,SUM(amount) AS amount,id,MONTHNAME(date) AS date FROM receipts WHERE user_id=".$_SESSION['id']." GROUP BY MONTH(date) desc";
+    
+                            $get_money_query=mysqli_query($conn,$get_money) or die(mysqli_error($conn));
+    
+                            if(mysqli_num_rows($get_money_query)>0) {
+
+      
+
+                             while ($money_row=mysqli_fetch_assoc($get_money_query)) {
+                                  echo $money_row['expected_rent']." ".$money_row['amount']." ".$money_row['id']." - ".$money_row['date']."<br>";
+                                  }
+                                }
+                                
+                                ?>
 
                         <div class="month border-bottom py-4">
                             <div class="d-flex flex-row justify-content-between ">
