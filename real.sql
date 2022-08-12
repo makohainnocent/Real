@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 05, 2022 at 04:54 PM
+-- Generation Time: Aug 12, 2022 at 11:42 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -101,11 +101,11 @@ CREATE TABLE `receipts` (
 --
 
 INSERT INTO `receipts` (`id`, `user_id`, `amount`, `balance`, `house_id`, `date`, `estate_id`, `payment_method`, `description`) VALUES
-(31, NULL, 12000, NULL, 27, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa'),
-(32, NULL, 12000, NULL, 28, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa'),
-(33, NULL, 12000, NULL, 29, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa'),
-(34, NULL, 12000, NULL, 30, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa'),
-(35, NULL, 12000, NULL, 31, '2022-08-05', 5, 'Cash', 'dsafsdfsdfa');
+(42, 1, 200000, NULL, 34, '2022-08-12', 5, 'Bank', 'werwerwer'),
+(43, 1, 300000, NULL, 35, '2022-08-12', 5, 'Bank', 'werwerwer'),
+(44, 1, 400000, NULL, 36, '2022-08-12', 5, 'Bank', 'werwerwer'),
+(45, 1, 300000, NULL, 37, '2022-08-12', 5, 'Bank', 'werwerwer'),
+(46, 1, 500000, NULL, 38, '2022-08-12', 5, 'Bank', 'werwerwer');
 
 -- --------------------------------------------------------
 
@@ -132,13 +132,11 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `user_id`, `unit_name`, `estate_id`, `monthly_rent`, `tenant_id`, `entrance_date`, `last_receipt_date`, `last_notified_date`, `vacancy`, `balance`) VALUES
-(27, NULL, 'room4', 5, 430000, 16, '2022-08-06', '2022-08-05', NULL, 1, NULL),
-(28, NULL, 'room1', 5, 30000, 13, '2022-08-05', '2022-08-05', NULL, 1, NULL),
-(29, 1, 'room2', 5, 340000, 14, '2022-08-05', '2022-08-05', NULL, 1, NULL),
-(30, 1, 'room5', 5, 450000, 15, '2022-08-05', '2022-08-05', NULL, 1, NULL),
-(31, 1, 'room3', 5, 123000, 17, '2022-08-05', '2022-08-05', NULL, 1, NULL),
-(32, 1, 'fdsf', 6, 100000, NULL, NULL, NULL, NULL, 0, NULL),
-(33, 1, 'kama1', 9, 200000, NULL, NULL, NULL, NULL, 0, NULL);
+(34, 1, 'room1', 5, 200000, 13, '2022-08-12', '2022-08-12', '2022-09-12', 1, NULL),
+(35, 1, 'room2', 5, 300000, 14, '2022-08-12', '2022-08-12', '2022-09-12', 1, NULL),
+(36, 1, 'room3', 5, 400000, 14, '2022-08-12', '2022-08-12', NULL, 1, NULL),
+(37, 1, 'room4', 5, 300000, 15, '2022-08-12', '2022-08-12', NULL, 1, NULL),
+(38, 1, 'room5', 5, 200000, 16, '2022-08-12', '2022-08-12', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -256,13 +254,13 @@ ALTER TABLE `owners`
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `tenants`

@@ -109,7 +109,8 @@ if (empty($_SESSION['id'])) {
 
                         <?php
 
-                             $get_money="SELECT (SELECT SUM(monthly_rent) FROM rooms WHERE user_id=".$_SESSION['id'].") AS expected_rent,SUM(amount) AS amount,id,MONTHNAME(date) AS date FROM receipts WHERE user_id=".$_SESSION['id']." GROUP BY MONTH(date) desc";
+                             $get_money="SELECT (SELECT SUM(monthly_rent) FROM rooms WHERE user_id=".$_SESSION['id'].") AS expected_rent, 
+                             SUM(amount) AS amount,id,MONTHNAME(receipts.date) AS date FROM receipts WHERE user_id=".$_SESSION['id']." GROUP BY MONTH(date) desc LIMIT 1";
     
                             $get_money_query=mysqli_query($conn,$get_money) or die(mysqli_error($conn));
     
@@ -117,88 +118,42 @@ if (empty($_SESSION['id'])) {
 
       
 
-                             while ($money_row=mysqli_fetch_assoc($get_money_query)) {
-                                  echo $money_row['expected_rent']." ".$money_row['amount']." ".$money_row['id']." - ".$money_row['date']."<br>";
-                                  }
-                                }
-                                
-                                ?>
-
-                        <div class="month border-bottom py-4">
-                            <div class="d-flex flex-row justify-content-between ">
-                                <div>
-                                    <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy
-                                            Thedon</small></p>
-                                </div>
-                                <h6 class="text-muted"></h6>
-                            </div>
-
-                            <div class="d-flex flex-row justify-content-between mb-2">
-                                <h4><?php echo number_format(2000) ?></h4>
-                                <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
-                                        AUGUST(30%)</small> </div>
-                                <h4><?php echo number_format(3000) ?></h4>
-
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
-                                    role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-
+                              while ($money_row=mysqli_fetch_assoc($get_money_query)) {
+                                //$money_row['expected_rent']." ".$money_row['amount']." ".$money_row['id']." - ".$money_row['date']."<br>";
+                                echo '
+                                  <div class="month border-bottom py-4">
+                                      <div class="d-flex flex-row justify-content-between ">
+                                          <div>
+                                              <p><small class="text-muted"><i class="fas fa-user  text-warning  "></i> Percy  
+                                                      Thedon</small></p>
+                                          </div>
+                                          <h6 class="text-muted"></h6>
+                                      </div>
+          
+                                      <div class="d-flex flex-row justify-content-between mb-2">
+                                      <div class="d-flex flex-column">
+                                          <h6>'.number_format($money_row['amount']).'</h6>
+                                          <small class="text-muted">Collected rent</small>
+                                      </div>
+                        <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
+                                '.$money_row['date'].'(30%)</small> </div>
+                        <div class="d-flex flex-column">
+                        <h6>'.number_format($money_row['expected_rent']).'<br /></h6>
+                        <small class="text-muted">Expexted rent</small>
                         </div>
 
-                        <div class="month border-bottom py-4">
-                            <div class="d-flex flex-row justify-content-between ">
-                                <div>Estate Name <p><small class="text-muted"><i
-                                                class="fas fa-user  text-warning  "></i> Percy Thedon</small></p>
-                                </div>
-                                <h6 class="text-muted"></h6>
-                            </div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+                            role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
 
-                            <div class="d-flex flex-row justify-content-between mb-2">
-                                <h4><?php echo number_format(2000) ?></h4>
-                                <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
-                                        AUGUST(30%)</small> </div>
-                                <h4><?php echo number_format(3000) ?></h4>
+                </div>';
+                }
+                }
 
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
-                                    role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-
-                        </div>
-
-                        <div class="month border-bottom py-4">
-                            <div class="d-flex flex-row justify-content-between ">
-                                <div>Estate Name <p><small class="text-muted"><i
-                                                class="fas fa-user  text-warning  "></i> Percy Thedon</small></p>
-                                </div>
-                                <h6 class="text-muted"></h6>
-                            </div>
-
-                            <div class="d-flex flex-row justify-content-between mb-2">
-                                <h4 class="text-wrap"><?php echo number_format(2000000000) ?></h4>
-                                <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
-                                        AUGUST(30%)</small> </div>
-                                <h4><?php echo number_format(3000) ?></h4>
-
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
-                                    role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-
-                        </div>
-
-
-
-
-
-
+                ?>
 
 
 
