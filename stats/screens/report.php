@@ -109,9 +109,8 @@ if (empty($_SESSION['id'])) {
 
                         <?php
 
-                             $get_money="SELECT (SELECT SUM(monthly_rent) FROM rooms WHERE user_id=".$_SESSION['id'].") AS expected_rent, 
-                             SUM(amount) AS amount,id,MONTHNAME(receipts.date) AS date FROM receipts WHERE user_id=".$_SESSION['id']." GROUP BY MONTH(date) desc LIMIT 1";
-    
+                             $get_money="SELECT (SELECT SUM(amount) FROM receipts WHERE MONTH(DATE)=MONTH(CURDATE()) ) AS amount,SUM(monthly_rent) as expected_rent FROM rooms";
+                             //SELECT (SELECT SUM(monthly_rent) FROM rooms WHERE user_id=".$_SESSION['id'].") AS expected_rent, SUM(amount) AS amount,id,MONTHNAME(receipts.date) AS date FROM receipts WHERE user_id=".$_SESSION['id']." GROUP BY MONTH(date) desc LIMIT 1
                             $get_money_query=mysqli_query($conn,$get_money) or die(mysqli_error($conn));
     
                             if(mysqli_num_rows($get_money_query)>0) {
@@ -120,6 +119,7 @@ if (empty($_SESSION['id'])) {
 
                               while ($money_row=mysqli_fetch_assoc($get_money_query)) {
                                 //$money_row['expected_rent']." ".$money_row['amount']." ".$money_row['id']." - ".$money_row['date']."<br>";
+                                $percentage=(($money_row['amount'])/($money_row['expected_rent']));
                                 echo '
                                   <div class="month border-bottom py-4">
                                       <div class="d-flex flex-row justify-content-between ">
@@ -136,7 +136,7 @@ if (empty($_SESSION['id'])) {
                                           <small class="text-muted">Collected rent</small>
                                       </div>
                         <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
-                                '.$money_row['date'].'(30%)</small> </div>
+                                '.date('F').'('.number_format(($percentage*100),2).'%)</small> </div>
                         <div class="d-flex flex-column">
                         <h6>'.number_format($money_row['expected_rent']).'<br /></h6>
                         <small class="text-muted">Expexted rent</small>
@@ -145,8 +145,8 @@ if (empty($_SESSION['id'])) {
                     </div>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
-                            role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
-                            aria-valuemax="100"></div>
+                            role="progressbar" style="width: 10%" aria-valuenow="'.$money_row['amount'].'" aria-valuemin="0"
+                            aria-valuemax="'.$money_row['expected_rent'].'"></div>
                     </div>
 
                 </div>';
@@ -155,8 +155,14 @@ if (empty($_SESSION['id'])) {
 
                 ?>
 
-
-
+                        <div class="d-flex justify-content-center mx-auto"><button type="button"
+                                class="m-3 btn btn-outline-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-save" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+                                </svg>
+                                Save Record</button></div>
 
                     </div>
                 </div>
@@ -169,7 +175,7 @@ if (empty($_SESSION['id'])) {
             <script>
             <?php 
 
-          $percentage_filled=number_format((($row['num_filled']/$row['total_rooms'])*100),2);
+          $percentage_filled=number_format((($row['num_filled']/$row['total_rooms'])*100),1);
           echo 'var data = {
   labels: [
     "Empty",
