@@ -109,7 +109,7 @@ if (empty($_SESSION['id'])) {
 
                         <?php
 
-                             $get_money="SELECT (SELECT SUM(amount) FROM receipts WHERE MONTH(DATE)=MONTH(CURDATE()) ) AS amount,SUM(monthly_rent) as expected_rent FROM rooms";
+                             $get_money="SELECT SUM(rent_collected) as total_rent_collected, SUM(rent_expected) as total_rent_expected, month FROM (SELECT (receipts.amount) as rent_collected,receipts.house_id, MONTHNAME(receipts.date) as month, rooms.id, (rooms.monthly_rent) as rent_expected FROM receipts RIGHT JOIN rooms ON receipts.house_id= rooms.id) as table_one GROUP BY month";
                              //SELECT (SELECT SUM(monthly_rent) FROM rooms WHERE user_id=".$_SESSION['id'].") AS expected_rent, SUM(amount) AS amount,id,MONTHNAME(receipts.date) AS date FROM receipts WHERE user_id=".$_SESSION['id']." GROUP BY MONTH(date) desc LIMIT 1
                             $get_money_query=mysqli_query($conn,$get_money) or die(mysqli_error($conn));
     
@@ -119,7 +119,7 @@ if (empty($_SESSION['id'])) {
 
                               while ($money_row=mysqli_fetch_assoc($get_money_query)) {
                                 //$money_row['expected_rent']." ".$money_row['amount']." ".$money_row['id']." - ".$money_row['date']."<br>";
-                                $percentage=(($money_row['amount'])/($money_row['expected_rent']));
+                                $percentage=(($money_row['total_rent_collected'])/($money_row['total_rent_expected']));
                                 echo '
                                   <div class="month border-bottom py-4">
                                       <div class="d-flex flex-row justify-content-between ">
@@ -132,24 +132,25 @@ if (empty($_SESSION['id'])) {
           
                                       <div class="d-flex flex-row justify-content-between mb-2">
                                       <div class="d-flex flex-column">
-                                          <h6>'.number_format($money_row['amount']).'</h6>
+                                          <h6>'.number_format($money_row['total_rent_collected']).'</h6>
                                           <small class="text-muted">Collected rent</small>
                                       </div>
                         <div> <small class="mt-3 text-muted"><i class="fas fa-calendar  text-primary  "></i>
-                                '.date('F').'('.number_format(($percentage*100),2).'%)</small> </div>
+                                '.$money_row['month'].'('.number_format(($percentage*100),2).'%)</small> </div>
                         <div class="d-flex flex-column">
-                        <h6>'.number_format($money_row['expected_rent']).'<br /></h6>
-                        <small class="text-muted">Expexted rent</small>
+                        <h6>'.number_format($money_row['total_rent_expected']).'<br /></h6>
+                        <small class="text-muted">Expected rent</small>
                         </div>
 
                     </div>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
-                            role="progressbar" style="width: 10%" aria-valuenow="'.$money_row['amount'].'" aria-valuemin="0"
-                            aria-valuemax="'.$money_row['expected_rent'].'"></div>
+                            role="progressbar" style="width:'.number_format(($percentage*100),2).' %" aria-valuenow="'.$money_row['total_rent_collected'].'" aria-valuemin="0"
+                            aria-valuemax="'.$money_row['total_rent_expected'].'"></div>
                     </div>
 
                 </div>';
+               
                 }
                 }
 
